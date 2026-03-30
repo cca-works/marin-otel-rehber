@@ -1,0 +1,13 @@
+# Mimari proje dosyaları (hassas/büyük)
+*.dwg
+*.dxf
+*.pdf
+WhatsApp*
+
+# Eski versiyonlar
+*_v2.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
