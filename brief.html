@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Marin Otel — İç Mimari Tasarım Hizmet Talebi</title>
+<title>Marin Otel — Interior Design Guideline</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -17,7 +17,6 @@
     --light-gray: #CCC;
     --pale-gray: #E8E8E8;
     --off-white: #F4F4F2;
-    --warm-white: #FAF9F6;
     --accent-red: #C0392B;
     --accent-teal: #1A6B6A;
     --accent-gold: #B8860B;
@@ -25,7 +24,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; color: var(--charcoal); background: white; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-  /* ── COVER ── */
   .cover { min-height: 100vh; background: var(--near-black); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 40px; page-break-after: always; }
   .cover-line { width: 80px; height: 3px; background: var(--accent-red); margin-bottom: 32px; }
   .cover h1 { font-weight: 900; font-size: 56px; color: white; letter-spacing: -2px; line-height: 1.1; }
@@ -36,9 +34,7 @@
   .cover-meta-item { text-align: center; }
   .cover-meta-item label { display: block; font-size: 9px; font-weight: 700; color: var(--mid-gray); letter-spacing: 2px; margin-bottom: 4px; }
   .cover-meta-item span { font-size: 13px; color: #CCC; }
-  .cover-badge { display: inline-block; margin-top: 32px; padding: 6px 20px; border: 1px solid #444; border-radius: 2px; font-size: 10px; font-weight: 700; color: var(--accent-red); letter-spacing: 2px; }
 
-  /* ── PAGE ── */
   .page { max-width: 800px; margin: 0 auto; padding: 60px 40px; page-break-after: always; }
   .section-num { font-size: 48px; font-weight: 800; color: var(--pale-gray); line-height: 1; margin-bottom: -6px; }
   .section-title { font-weight: 800; font-size: 24px; color: var(--near-black); letter-spacing: -0.5px; }
@@ -50,7 +46,11 @@
   h4 { font-size: 15px; font-weight: 700; color: var(--near-black); margin: 28px 0 10px; }
   h4::after { content: ''; display: block; width: 30px; height: 2px; background: var(--near-black); margin-top: 6px; }
 
-  /* ── AREA CARDS ── */
+  .hero-img { width: 100%; height: 260px; object-fit: cover; border-radius: 2px; margin: 20px 0 6px; }
+  .img-caption { font-size: 10px; color: var(--mid-gray); margin-bottom: 20px; font-style: italic; }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .img-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 2px; }
+
   .area-card { border: 1px solid var(--pale-gray); border-radius: 3px; padding: 24px; margin-bottom: 16px; page-break-inside: avoid; }
   .area-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .area-icon { width: 36px; height: 36px; background: var(--near-black); color: white; display: flex; align-items: center; justify-content: center; border-radius: 3px; font-size: 14px; font-weight: 800; flex-shrink: 0; }
@@ -64,7 +64,6 @@
   .area-body li { margin-bottom: 4px; }
   .area-note { margin-top: 10px; padding: 10px 14px; background: var(--off-white); border-left: 3px solid var(--accent-teal); font-size: 12px; color: var(--dark-gray); }
 
-  /* ── SCOPE TABLE ── */
   .scope-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
   .scope-table thead th { background: var(--near-black); color: white; padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 1px; }
   .scope-table tbody td { padding: 12px 14px; border-bottom: 1px solid var(--pale-gray); vertical-align: top; }
@@ -73,18 +72,19 @@
   .scope-tag.required { background: var(--near-black); color: white; }
   .scope-tag.optional { background: var(--pale-gray); color: var(--dark-gray); }
 
-  /* ── PRICING FORMAT ── */
   .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
   .price-item { border: 1px solid var(--pale-gray); padding: 16px; border-radius: 3px; }
   .price-item.highlight { border-color: var(--accent-teal); background: rgba(26,107,106,0.03); }
   .price-label { font-size: 10px; font-weight: 700; color: var(--mid-gray); letter-spacing: 1.5px; margin-bottom: 4px; }
   .price-desc { font-size: 13px; color: var(--near-black); }
 
-  /* ── MOOD KEYWORDS ── */
   .mood-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
   .mood-chip { padding: 6px 14px; background: var(--off-white); border: 1px solid var(--pale-gray); border-radius: 20px; font-size: 11px; font-weight: 600; color: var(--dark-gray); }
 
-  /* ── TIMELINE ── */
+  .spec-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  .spec-table td { padding: 8px 12px; border-bottom: 1px solid var(--pale-gray); }
+  .spec-table td:first-child { font-weight: 700; color: var(--near-black); width: 40%; font-size: 11px; letter-spacing: 0.5px; }
+
   .timeline { margin: 16px 0; }
   .timeline-item { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--pale-gray); }
   .timeline-step { width: 28px; height: 28px; background: var(--near-black); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
@@ -92,21 +92,14 @@
   .timeline-title { font-size: 13px; font-weight: 700; color: var(--near-black); }
   .timeline-desc { font-size: 12px; color: var(--warm-gray); margin-top: 2px; }
 
-  /* ── FOOTER ── */
-  .brief-footer { text-align: center; padding: 40px; border-top: 1px solid var(--pale-gray); margin-top: 40px; }
-  .brief-footer p { font-size: 11px; color: var(--mid-gray); }
-
-  /* ── SEPARATOR ── */
   .sep { border: none; border-top: 1px solid var(--pale-gray); margin: 32px 0; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .cover h1 { font-size: 36px; }
     .cover-meta { flex-direction: column; gap: 16px; }
     .page { padding: 32px 20px; }
     .price-grid { grid-template-columns: 1fr; }
-    .section-num { font-size: 36px; }
-    .section-title { font-size: 20px; }
+    .img-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .cover { padding: 40px 20px; }
@@ -114,8 +107,6 @@
     .page { padding: 24px 16px; }
     .area-card { padding: 16px; }
   }
-
-  /* ── PRINT ── */
   @media print {
     .cover { min-height: 100vh; }
     .page { padding: 40px 30px; }
@@ -132,100 +123,126 @@
   <h1>MARİN OTEL</h1>
   <h2>Samsun | Atakum</h2>
   <div class="cover-divider"></div>
-  <h3>İÇ MİMARİ TASARIM HİZMET TALEBİ</h3>
+  <h3>INTERIOR DESIGN GUIDELINE</h3>
   <div class="cover-meta">
     <div class="cover-meta-item">
-      <label>HAZIRLANMA TARİHİ</label>
+      <label>TARİH</label>
       <span>Nisan 2026</span>
     </div>
     <div class="cover-meta-item">
-      <label>HAZIRLAYAN</label>
-      <span>CCA Mimarlık</span>
-    </div>
-    <div class="cover-meta-item">
-      <label>DOKÜMAN TİPİ</label>
+      <label>DOKÜMAN</label>
       <span>Hizmet Talep Dosyası</span>
     </div>
+    <div class="cover-meta-item">
+      <label>PROJE SAHİBİ</label>
+      <span>Marin Otel</span>
+    </div>
   </div>
-  <div class="cover-badge">GİZLİ — SADECE DAVET EDİLEN OFİSLER İÇİN</div>
 </section>
 
-<!-- ═══════ 01 — PROJE ÖZETİ ═══════ -->
+<!-- ═══════ 01 — PROJE TANIMI ═══════ -->
 <div class="page">
   <div class="section-num">01</div>
-  <div class="section-title">PROJE ÖZETİ</div>
+  <div class="section-title">PROJE TANIMI</div>
+  <div class="section-subtitle">& Yapı Programı</div>
   <div class="section-bar"></div>
 
-  <p class="lead">Marin Otel, Samsun Atakum'da deniz manzaralı konumuyla butik otel segmentinde konumlandırılmak üzere tasarlanacak bir konaklama projesidir. Projenin iç mimari tasarımı için profesyonel hizmet alımı planlanmaktadır.</p>
+  <p class="lead">Marin Otel, Samsun Atakum sahil aksında konumlanan, deniz cepheli bir butik otel projesidir. Mimari proje tamamlanmış olup, iç mimari tasarım ve uygulama projesi hizmeti için teklif alınmaktadır. Mimari uygulama projeleri tasarımcı ofise sağlanacaktır.</p>
 
-  <h4>Konum & Ölçek</h4>
-  <p>Otel, Samsun'un Atakum ilçesinde, sahil şeridine yakın bir konumda yer almaktadır. Proje, butik otel ölçeğinde planlanmış olup, otel odaları, restoran, Fransız pastanesi/kafe, lobi ve ortak alanlar gibi farklı iç mekan programlarını kapsamaktadır.</p>
+  <h4>Konum</h4>
+  <p>Samsun ili, Atakum ilçesi. Sahil şeridine yürüme mesafesinde, şehir merkezine erişimi kolay bir konumda yer almaktadır. Yapı, Karadeniz kıyı iklim koşullarına uygun olarak tasarlanmıştır.</p>
 
-  <h4>Vizyon</h4>
-  <p>Modern ama sıcak, doğal malzemelerin ön planda olduğu, yeşil peyzajla iç-dış bütünlüğü sağlayan, misafirlerine "evden uzakta ev" hissi veren bir butik otel deneyimi yaratılması hedeflenmektedir. Otelin bünyesinde bağımsız işletilebilecek bir Fransız pastanesi/kafe konsepti de bulunmaktadır.</p>
+  <h4>Yapı Özellikleri</h4>
+  <table class="spec-table">
+    <tr><td>YAPI TİPİ</td><td>Butik Otel</td></tr>
+    <tr><td>KAT ADEDİ</td><td>Bodrum + Zemin + 4 Normal Kat + Çatı Katı</td></tr>
+    <tr><td>TOPLAM İNŞAAT ALANI</td><td>~3.200 m&sup2;</td></tr>
+    <tr><td>ODA SAYISI</td><td>32 oda (28 standart + 4 suit)</td></tr>
+    <tr><td>RESTORAN KAPASİTESİ</td><td>~80 kişi (iç mekan + teras)</td></tr>
+    <tr><td>ASANSÖR</td><td>1 adet yolcu asansörü + 1 adet servis asansörü</td></tr>
+    <tr><td>OTOPARK</td><td>Bodrum katta kapalı otopark (16 araç)</td></tr>
+    <tr><td>MİMARİ PROJE</td><td>Tamamlanmış — iç mimari ofise sağlanacaktır</td></tr>
+  </table>
 
-  <h4>Hedef Segment</h4>
-  <p>Orta-üst gelir grubu, iş ve leisure amaçlı konaklama. Şehir otelciliğinde fark yaratan, tasarım odaklı bir deneyim arayan misafir profili.</p>
+  <h4>Kat Bazlı Program</h4>
+  <table class="spec-table">
+    <tr><td>BODRUM KAT</td><td>Otopark, teknik hacimler, depo, çamaşırhane, personel soyunma</td></tr>
+    <tr><td>ZEMİN KAT</td><td>Lobi & resepsiyon, restoran (açık mutfak), Fransız pastanesi/kafe, idari ofis</td></tr>
+    <tr><td>1. — 4. NORMAL KAT</td><td>Otel odaları (her katta 7 standart + 1 suit oda)</td></tr>
+    <tr><td>ÇATI KATI</td><td>Teras bar / lounge (mevsimsel kullanım), makine dairesi</td></tr>
+  </table>
+
+  <h4>Donatı & Teknik Alanlar</h4>
+  <table class="spec-table">
+    <tr><td>MUTFAK</td><td>Endüstriyel mutfak (restoran + pastane ortak kullanım), soğuk oda, kuru depo</td></tr>
+    <tr><td>ÇAMAŞIRHANE</td><td>Endüstriyel çamaşır/kurutma/ütü bölümü</td></tr>
+    <tr><td>MEKANİK TESİSAT</td><td>Kazan dairesi, VRF klima sistemi, sıhhi tesisat şaftları</td></tr>
+    <tr><td>ELEKTRİK</td><td>Trafo, jeneratör odası, zayıf akım (kartlı giriş, IPTV, Wi-Fi altyapısı)</td></tr>
+    <tr><td>YANGIN</td><td>Sprinkler sistemi, duman tahliye, yangın merdiveni</td></tr>
+    <tr><td>PEYZAJ</td><td>Giriş peyzajı, teras yeşillendirme, cephe bitkilendirme</td></tr>
+  </table>
+
+  <div class="area-note">
+    <strong>Not:</strong> Mimari uygulama projesi (statik, mekanik, elektrik) tamamlanmış durumdadır ve seçilen iç mimari ofise proje başlangıcında teslim edilecektir. İç mimari proje, mevcut mimari kararlarla koordineli olarak geliştirilecektir.
+  </div>
 </div>
 
-<!-- ═══════ 02 — KONSEPT YÖNELİMİ ═══════ -->
+<!-- ═══════ 02 — TASARIM YÖNELİMİ ═══════ -->
 <div class="page">
   <div class="section-num">02</div>
-  <div class="section-title">KONSEPT</div>
+  <div class="section-title">TASARIM</div>
   <div class="section-subtitle">Yönelimi</div>
   <div class="section-bar"></div>
 
-  <p class="lead">Aşağıdaki konsept yönelimi, proje sahibinin hazırladığı Pinterest referans panosundan derlenmiştir. Bu yönelim kesin tasarım kararı değil, ofislerin konsept çalışmasına başlangıç noktası oluşturması amaçlanan bir atmosfer tanımıdır.</p>
+  <p class="lead">Aşağıda tanımlanan tasarım yönelimi, proje sahibinin belirlediği atmosfer ve malzeme tercihlerini özetlemektedir. Bu çerçeve, nihai tasarım kararı niteliğinde olmayıp konsept çalışmasına yön verecek bir başlangıç noktasıdır.</p>
 
-  <h4>Atmosfer Anahtar Kelimeleri</h4>
+  <h4>Tasarım Dili</h4>
   <div class="mood-grid">
-    <span class="mood-chip">Modern-Sıcak</span>
-    <span class="mood-chip">Doğal Malzeme</span>
-    <span class="mood-chip">Taş & Ahşap & Beton</span>
-    <span class="mood-chip">Fransız Pastane</span>
-    <span class="mood-chip">Butik Otel</span>
-    <span class="mood-chip">Yeşil Peyzaj</span>
-    <span class="mood-chip">Endüstriyel-Sıcak</span>
-    <span class="mood-chip">Minimal Oda</span>
-    <span class="mood-chip">Açık Mutfak</span>
-    <span class="mood-chip">İç-Dış Bütünlük</span>
+    <span class="mood-chip">Contemporary Warm</span>
+    <span class="mood-chip">Natural Materials</span>
+    <span class="mood-chip">Stone / Timber / Exposed Concrete</span>
+    <span class="mood-chip">Biophilic Design</span>
+    <span class="mood-chip">Boutique Hospitality</span>
+    <span class="mood-chip">Open Kitchen</span>
+    <span class="mood-chip">French Patisserie</span>
+    <span class="mood-chip">Indoor-Outdoor Continuity</span>
   </div>
 
-  <h4>Mekan Bazlı Yönelimler</h4>
-  <p><strong>Lobi:</strong> Doğal ışık alan, yeşillikle iç içe, modern butik otel girişi. Sıcak tonlarda, davetkar bir karşılama atmosferi.</p>
-  <p><strong>Restoran:</strong> Açık mutfak konsepti, endüstriyel-sıcak atmosfer. Doğal malzemeler (ahşap, metal, taş) ile samimi bir yemek deneyimi.</p>
-  <p><strong>Fransız Pastanesi:</strong> Cafe de l'Epoque ilhamında klasik Fransız pastane/kafe estetiği. Caddeye açılabilir, bağımsız işletilebilir konsept.</p>
-  <p><strong>Oda Tasarımı:</strong> Minimal, sıcak tonlar, doğal kumaşlar ve ahşap detaylar. Huzurlu, dinlendirici bir konaklama deneyimi.</p>
+  <h4>Malzeme Paleti Yönelimi</h4>
+  <p>Doğal taş (traverten, bazalt), masif ahşap (meşe, ceviz), brüt beton yüzeyler, dokulu sıvalar, doğal kumaşlar (keten, pamuk, yün). Metal aksanlarda mat siyah ve antik pirinç tonları. Plastik ve sentetik malzemelerden kaçınılması tercih edilmektedir.</p>
 
-  <div class="area-note">
-    <strong>Referans Pano:</strong> Detaylı görsel referanslar için Pinterest panosuna erişim toplantıda paylaşılacaktır.
-  </div>
+  <h4>Renk Paleti</h4>
+  <p>Toprak tonları hakimiyetinde: kum beji, sıcak gri, terrakotta, zeytin yeşili, koyu kahve. Vurgu renkleri olarak koyu lacivert ve bordo tonları minimal kullanım. Genel atmosfer sıcak, davetkar ve sofistike.</p>
+
+  <img class="hero-img" src="images/brief-lobby.jpg" alt="Lobi konsept yönelimi">
+  <p class="img-caption">Referans atmosfer: Doğal malzeme, sıcak aydınlatma, biophilic tasarım yaklaşımı</p>
 </div>
 
-<!-- ═══════ 03 — MEKAN PROGRAMI ═══════ -->
+<!-- ═══════ 03 — İÇ MEKAN PROGRAMI ═══════ -->
 <div class="page">
   <div class="section-num">03</div>
   <div class="section-title">İÇ MEKAN</div>
-  <div class="section-subtitle">İhtiyaç Programı</div>
+  <div class="section-subtitle">Tasarım Programı</div>
   <div class="section-bar"></div>
 
-  <p class="lead">Aşağıda, iç mimari tasarım hizmeti talep edilen mekan alanları ve her biri için beklentiler özetlenmiştir.</p>
+  <p class="lead">İç mimari tasarım hizmeti kapsamında yer alan mekan birimleri ve her birim için beklenen tasarım yaklaşımı aşağıda tanımlanmıştır.</p>
 
   <!-- LOBİ -->
   <div class="area-card">
     <div class="area-card-header">
       <div class="area-icon">L</div>
-      <div><div class="area-name">Lobi & Resepsiyon</div><div class="area-tag">KARŞILAMA + CHECK-IN + BEKLEME</div></div>
+      <div><div class="area-name">Lobi & Resepsiyon</div><div class="area-tag">~120 m&sup2; | ZEMİN KAT</div></div>
     </div>
     <div class="area-body">
-      <p>Otelin ilk izlenimi. Misafirleri karşılayan, check-in işlemlerinin yapıldığı, oturma/bekleme alanı içeren ana mekan.</p>
+      <p>Yapının karşılama mekanı. Resepsiyon bankosunun yanı sıra bekleme/oturma grubu, bagaj alanı ve concierge fonksiyonlarını barındırır. Zemin kattan restoran ve pastane alanlarına görsel ve mekansal geçişkenlik sağlanmalıdır.</p>
       <ul>
-        <li>Resepsiyon bankosunun tasarımı</li>
-        <li>Oturma/bekleme grupları</li>
-        <li>Aydınlatma konsepti</li>
-        <li>Zemin, duvar, tavan malzeme seçimleri</li>
+        <li>Resepsiyon bankosu tasarımı (doğal taş + ahşap kompozisyon)</li>
+        <li>Oturma grubu ve bekleme alanı mobilya seçimi</li>
+        <li>Zemin kaplama (lobi — restoran — pastane sürekliliği)</li>
+        <li>Tavan tasarımı ve aydınlatma senaryosu</li>
+        <li>Giriş holü ile dış peyzaj arasında görsel süreklilik</li>
       </ul>
-      <div class="area-note">Doğal ışık ve yeşil peyzajla bütünleşik bir giriş deneyimi hedeflenmektedir.</div>
+      <div class="area-note">Mekansal kurgu, misafirin giriş anından itibaren otelin tasarım kimliğini algılamasını sağlamalıdır. Doğal ışık kullanımı ve bitkilendirme tasarımın ayrılmaz parçası olarak değerlendirilmektedir.</div>
     </div>
   </div>
 
@@ -233,71 +250,109 @@
   <div class="area-card">
     <div class="area-card-header">
       <div class="area-icon teal">R</div>
-      <div><div class="area-name">Restoran</div><div class="area-tag">AÇIK MUTFAK + KAHVALTI + AKŞAM YEMEĞİ</div></div>
+      <div><div class="area-name">Restoran</div><div class="area-tag">~180 m&sup2; + 60 m&sup2; TERAS | ZEMİN KAT</div></div>
     </div>
     <div class="area-body">
-      <p>Sabah kahvaltı servisi ve akşam yemeği için kullanılacak ana restoran alanı. Açık mutfak konsepti tercih edilmektedir.</p>
+      <p>Sabah kahvaltı büfesi ve akşam a la carte servis yapılacak ana yeme-içme mekanı. Açık mutfak konsepti uygulanacaktır; mutfak ile salon arasındaki sınır tasarım elemanı olarak ele alınmalıdır.</p>
       <ul>
-        <li>Açık mutfak alanı tasarımı ve mutfak-salon ilişkisi</li>
-        <li>Masa düzeni ve oturma kapasitesi planlaması</li>
-        <li>Bar/servis alanı</li>
-        <li>Malzeme paleti (ahşap, metal, taş karışımı)</li>
-        <li>Aydınlatma senaryoları (sabah/akşam farklı atmosfer)</li>
+        <li>Açık mutfak cephesi ve show-cooking alanı detayları</li>
+        <li>Masa düzeni: 2'li, 4'lü, 6'lı gruplar + büyük masa seçeneği</li>
+        <li>Bar/servis tezgahı tasarımı</li>
+        <li>Teras mobilyası ve dış mekan aydınlatması</li>
+        <li>Akustik çözümler (tavan paneli, kumaş elemanlar)</li>
+        <li>Gündüz/akşam farklı atmosfer yaratan aydınlatma senaryoları</li>
       </ul>
-      <div class="area-note">Endüstriyel-sıcak atmosfer. Misafirin mutfağı görebildiği, samimi bir yemek deneyimi.</div>
     </div>
   </div>
+
+  <img class="hero-img" src="images/brief-restaurant.jpg" alt="Restoran konsept yönelimi">
+  <p class="img-caption">Referans atmosfer: Açık mutfak, doğal malzeme, endüstriyel-sıcak karakter</p>
 
   <!-- FRANSIZ PASTANESİ -->
   <div class="area-card">
     <div class="area-card-header">
       <div class="area-icon gold">P</div>
-      <div><div class="area-name">Fransız Pastanesi / Kafe</div><div class="area-tag">CADDEYE AÇIK + BAĞIMSIZ İŞLETİLEBİLİR</div></div>
+      <div><div class="area-name">Patisserie & Kafe</div><div class="area-tag">~90 m&sup2; | ZEMİN KAT — CADDE CEPHESİ</div></div>
     </div>
     <div class="area-body">
-      <p>Otelin bünyesinde yer alan ancak caddeye de açılabilen, bağımsız işletilebilir bir Fransız pastanesi/kafe. Hem otel misafirleri hem de dışarıdan gelen müşterilere hizmet verecek.</p>
+      <p>Otel bünyesinde konumlanmış, ancak cadde cephesinden bağımsız girişe sahip, ayrı bir işletme olarak da çalışabilecek Fransız patisserie/kafe. Hem otel konuklarına hem sokaktan gelen müşterilere hizmet verecektir.</p>
       <ul>
-        <li>Vitrin ve teşhir alanı tasarımı</li>
-        <li>İç oturma alanı + varsa dış oturma</li>
-        <li>Tezgah/bar alanı</li>
-        <li>Klasik Fransız pastane estetiği (Cafe de l'Epoque referansı)</li>
+        <li>Vitrin ve teşhir dolabı tasarımı (pastane ürün sergileme)</li>
+        <li>Tezgah/bar alanı (espresso makinesi, servis noktası)</li>
+        <li>İç oturma düzeni (~30 kişi)</li>
+        <li>Caddeye açılan dış oturma alanı (mevsimsel)</li>
+        <li>Klasik Fransız patisserie estetiği: mermer tezgah, pirinç detaylar, vitray/cam bölücüler</li>
       </ul>
-      <div class="area-note">Bu alan otelin kimliğini caddeye taşıyan bir vitrin işlevi görecek. Özgün ve hatırlanır bir konsept beklenmektedir.</div>
+      <div class="area-note">Bu birim, otelin caddeye açılan vitrini olarak değerlendirilmektedir. Kendi başına hatırlanır bir mekan kimliği oluşturması beklenmektedir.</div>
     </div>
   </div>
 
-  <!-- ODA TASARIMI -->
+  <img class="hero-img" src="images/brief-patisserie.jpg" alt="Patisserie konsept yönelimi">
+  <p class="img-caption">Referans atmosfer: Fransız patisserie karakteri, doğal malzeme detayları</p>
+</div>
+
+<!-- ═══════ 03 devam — ODA + ORTAK ALANLAR ═══════ -->
+<div class="page">
+  <div class="section-num">03</div>
+  <div class="section-title">İÇ MEKAN</div>
+  <div class="section-subtitle">Tasarım Programı (devam)</div>
+  <div class="section-bar"></div>
+
+  <!-- ODA -->
   <div class="area-card">
     <div class="area-card-header">
       <div class="area-icon">O</div>
-      <div><div class="area-name">Otel Odaları</div><div class="area-tag">STANDART + SUİT TİPLERİ</div></div>
+      <div><div class="area-name">Otel Odaları</div><div class="area-tag">28 STANDART (~24 m&sup2;) + 4 SUİT (~42 m&sup2;)</div></div>
     </div>
     <div class="area-body">
-      <p>Farklı oda tiplerinin iç mimari tasarımı. Her tip için mobilya yerleşimi, malzeme seçimleri ve detay tasarımları.</p>
+      <p>Her katta 7 standart ve 1 suit oda olmak üzere toplam 32 oda. Her oda tipi için ayrı tasarım çalışması beklenmektedir. Banyolar oda tasarımının ayrılmaz parçası olarak ele alınmalıdır.</p>
       <ul>
-        <li>Standart oda tipi tasarımı</li>
-        <li>Suit oda tipi tasarımı (varsa)</li>
-        <li>Yatak, dolap, çalışma alanı, minibar düzeni</li>
-        <li>Banyo tasarımı (her oda tipi için)</li>
-        <li>Perde, tekstil, aydınlatma seçimleri</li>
+        <li>Standart oda: yatak, çalışma köşesi, minibar ünitesi, gardırop</li>
+        <li>Suit oda: oturma bölümü, yatak odası, geniş banyo, walk-in gardırop</li>
+        <li>Banyo: duş/küvet, lavabo ünitesi, WC (suit odalarda ayrı)</li>
+        <li>Zemin/duvar kaplamaları, yatak başı ünitesi, aydınlatma</li>
+        <li>Perde/stor sistemi, tekstil seçimleri</li>
+        <li>Oda kapısı ve giriş holü detayı</li>
       </ul>
-      <div class="area-note">Minimal, sıcak tonlar, doğal kumaşlar. Huzurlu ve dinlendirici bir oda deneyimi. Detaylı oda adetleri ve tipleri toplantıda paylaşılacaktır.</div>
     </div>
   </div>
 
-  <!-- ORTAK ALANLAR -->
+  <img class="hero-img" src="images/brief-room.jpg" alt="Oda tasarımı yönelimi">
+  <p class="img-caption">Referans atmosfer: Minimal, sıcak tonlar, doğal kumaş ve ahşap</p>
+
+  <!-- KORİDOR -->
   <div class="area-card">
     <div class="area-card-header">
       <div class="area-icon teal">K</div>
-      <div><div class="area-name">Koridor & Ortak Alanlar</div><div class="area-tag">KAT HOLLERİ + ASANSÖR + MERDİVEN</div></div>
+      <div><div class="area-name">Koridorlar & Sirkülasyon Alanları</div><div class="area-tag">TÜM KATLAR</div></div>
     </div>
     <div class="area-body">
-      <p>Kat holleri, koridorlar, asansör kabinleri, merdiven boşlukları gibi sirkülasyon alanlarının iç mimari tasarımı.</p>
+      <p>Kat holleri, koridorlar, asansör kabinleri, merdiven boşlukları. Bu alanlar otelin tasarım dilini katlara taşıyan geçiş mekanlarıdır.</p>
       <ul>
-        <li>Koridor aydınlatma ve malzeme konsepti</li>
-        <li>Kat holü tasarımı</li>
-        <li>Yönlendirme/tabela sistemi</li>
+        <li>Koridor zemin ve duvar kaplamaları</li>
+        <li>Kat holü tasarımı (asansör önü)</li>
+        <li>Aydınlatma (genel + vurgu)</li>
+        <li>Yönlendirme ve oda numaralama sistemi (signage)</li>
         <li>Asansör kabin iç tasarımı</li>
+        <li>Yangın merdiveni kapı ve korkuluk detayları</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TERAS -->
+  <div class="area-card">
+    <div class="area-card-header">
+      <div class="area-icon red">T</div>
+      <div><div class="area-name">Çatı Terası / Lounge Bar</div><div class="area-tag">~100 m&sup2; | ÇATI KATI</div></div>
+    </div>
+    <div class="area-body">
+      <p>Deniz manzaralı çatı terası, mevsimsel kullanıma uygun bar/lounge alanı olarak tasarlanacaktır.</p>
+      <ul>
+        <li>Bar tezgahı ve servis alanı</li>
+        <li>Oturma grupları (lounge + bar tipi)</li>
+        <li>Dış mekan aydınlatması</li>
+        <li>Rüzgar koruması ve gölgelendirme elemanları</li>
+        <li>Zemin kaplama (dış mekan uyumlu)</li>
       </ul>
     </div>
   </div>
@@ -306,47 +361,47 @@
 <!-- ═══════ 04 — HİZMET KAPSAMI ═══════ -->
 <div class="page">
   <div class="section-num">04</div>
-  <div class="section-title">TALEP EDİLEN</div>
-  <div class="section-subtitle">Hizmet Kapsamı</div>
+  <div class="section-title">HİZMET</div>
+  <div class="section-subtitle">Kapsamı & Teslimatlar</div>
   <div class="section-bar"></div>
 
-  <p class="lead">Aşağıdaki hizmet kalemleri için ayrı ayrı fiyatlandırma talep edilmektedir. Zorunlu ve opsiyonel kalemler belirtilmiştir.</p>
+  <p class="lead">Aşağıdaki hizmet kalemleri için ayrı ayrı fiyatlandırma talep edilmektedir.</p>
 
   <table class="scope-table">
     <thead>
-      <tr><th>KALEM</th><th>AÇIKLAMA</th><th>DURUM</th></tr>
+      <tr><th>KALEM</th><th>KAPSAM</th><th>DURUM</th></tr>
     </thead>
     <tbody>
       <tr>
         <td><strong>A) Konsept Tasarım</strong></td>
-        <td>Moodboard hazırlama, malzeme paleti oluşturma, konsept 3D görseller, mekan atmosfer tanımı</td>
+        <td>Konsept paftaları, malzeme ve renk paleti, mekan kurgusu diyagramları, konsept 3D görseller (her birim için minimum 2 görsel)</td>
         <td><span class="scope-tag required">ZORUNLU</span></td>
       </tr>
       <tr>
         <td><strong>B) Uygulama Projesi</strong></td>
-        <td>Teknik çizimler (plan, kesit, görünüş), detay projeleri, malzeme şartnameleri, imalat çizimleri, elektrik/aydınlatma planları</td>
+        <td>1/50 ve 1/20 ölçekli planlar, kesitler, görünüşler; imalat detayları (1/5, 1/1); malzeme şartnameleri; elektrik/aydınlatma planları; tavan planları; döşeme planları</td>
         <td><span class="scope-tag required">ZORUNLU</span></td>
       </tr>
       <tr>
         <td><strong>C) Uygulama Denetimi</strong></td>
-        <td>İnşaat sürecinde yerinde kontrol ziyaretleri, malzeme onayları, imalat takibi</td>
+        <td>İnşaat süresince periyodik saha ziyaretleri, malzeme numune onayları, imalat kontrolleri, montaj denetimi. Minimum ayda 2 ziyaret öngörülmektedir.</td>
+        <td><span class="scope-tag required">ZORUNLU</span></td>
+      </tr>
+      <tr>
+        <td><strong>D) FF&E Seçimi</strong></td>
+        <td>Mobilya, aydınlatma armatürleri, aksesuar, tekstil, sanat eseri seçimi ve tedarik koordinasyonu</td>
         <td><span class="scope-tag optional">OPSİYONEL</span></td>
       </tr>
       <tr>
-        <td><strong>D) Mobilya & FF&E</strong></td>
-        <td>Mobilya, aydınlatma, aksesuar, tekstil seçimi ve tedarik danışmanlığı</td>
-        <td><span class="scope-tag optional">OPSİYONEL</span></td>
-      </tr>
-      <tr>
-        <td><strong>E) Uygulama Dahil Toplam</strong></td>
-        <td>Tasarım + uygulama projesinin yanı sıra fiziksel uygulamayı da kapsayan ortalama bir teklif (referans amaçlı)</td>
+        <td><strong>E) Uygulama Dahil Teklif</strong></td>
+        <td>Yukarıdaki tüm tasarım hizmetlerinin yanı sıra fiziksel uygulamayı (imalat + montaj) da içeren toplam teklif bedeli</td>
         <td><span class="scope-tag optional">OPSİYONEL</span></td>
       </tr>
     </tbody>
   </table>
 
   <div class="area-note">
-    <strong>Önemli Not — Uygulama Yeri:</strong> İç mekan uygulaması (inşaat, imalat, montaj) büyük ihtimalle Samsun'da yerel ekiplerle gerçekleştirilecektir. Ancak, uygulama dahil toplam bir teklif de referans olarak değerlendirilmek üzere talep edilmektedir.
+    <strong>Uygulama Notu:</strong> İç mekan uygulaması (imalat, montaj) Samsun'da yerel yüklenicilerle gerçekleştirilmesi öngörülmektedir. Ancak, uygulama dahil bir toplam bedel de karşılaştırma amacıyla değerlendirilecektir.
   </div>
 </div>
 
@@ -354,107 +409,103 @@
 <div class="page">
   <div class="section-num">05</div>
   <div class="section-title">TEKLİF</div>
-  <div class="section-subtitle">Formatı & Beklentiler</div>
+  <div class="section-subtitle">Formatı</div>
   <div class="section-bar"></div>
 
-  <p class="lead">Teklifinizi aşağıdaki formata uygun şekilde hazırlamanızı rica ederiz. Her kalem ayrı ayrı fiyatlandırılmalıdır.</p>
-
-  <h4>Teklifte Yer Alması Gereken Bilgiler</h4>
+  <p class="lead">Teklifin aşağıdaki kalemleri ayrı ayrı içerecek şekilde yapılandırılması beklenmektedir.</p>
 
   <div class="price-grid">
     <div class="price-item highlight">
-      <div class="price-label">A) KONSEPT TASARIM BEDELİ</div>
-      <div class="price-desc">Moodboard, malzeme paleti, 3D görseller</div>
+      <div class="price-label">A) KONSEPT TASARIM</div>
+      <div class="price-desc">Konsept paftaları, malzeme paleti, 3D görseller</div>
     </div>
     <div class="price-item highlight">
-      <div class="price-label">B) UYGULAMA PROJESİ BEDELİ</div>
-      <div class="price-desc">Teknik çizimler, detaylar, şartnameler</div>
+      <div class="price-label">B) UYGULAMA PROJESİ</div>
+      <div class="price-desc">Teknik çizimler, imalat detayları, şartnameler</div>
+    </div>
+    <div class="price-item highlight">
+      <div class="price-label">C) UYGULAMA DENETİMİ</div>
+      <div class="price-desc">Saha ziyaretleri, malzeme onayları, montaj kontrolü</div>
     </div>
     <div class="price-item">
-      <div class="price-label">C) DENETİM BEDELİ</div>
-      <div class="price-desc">Yerinde kontrol ziyaretleri (opsiyonel)</div>
-    </div>
-    <div class="price-item">
-      <div class="price-label">D) FF&E DANIŞMANLIK</div>
-      <div class="price-desc">Mobilya/aksesuar seçim danışmanlığı (opsiyonel)</div>
+      <div class="price-label">D) FF&E SEÇİMİ</div>
+      <div class="price-desc">Mobilya, aydınlatma, aksesuar danışmanlığı</div>
     </div>
     <div class="price-item">
       <div class="price-label">E) UYGULAMA DAHİL TOPLAM</div>
-      <div class="price-desc">Ortalama referans teklif (opsiyonel)</div>
+      <div class="price-desc">Tasarım + uygulama bütünleşik teklif</div>
     </div>
     <div class="price-item">
-      <div class="price-label">F) ÖDEME PLANI</div>
-      <div class="price-desc">Aşamalara göre ödeme takvimi önerisi</div>
+      <div class="price-label">F) ÖDEME TAKVİMİ</div>
+      <div class="price-desc">Aşamalara göre ödeme planı önerisi</div>
     </div>
   </div>
 
-  <h4>Ek Beklentiler</h4>
+  <h4>Ek Bilgiler</h4>
   <ul style="font-size:13px; margin-left:16px;">
-    <li>Tahmini proje süresi (konsept + uygulama projesi)</li>
-    <li>Ekipte yer alacak kişi sayısı ve rolleri</li>
-    <li>Benzer ölçekte tamamlanmış referans proje örnekleri</li>
-    <li>Revizyon politikası (konsept aşamasında kaç tur revizyon dahil)</li>
+    <li>Tahmini proje süresi (konsept + uygulama projesi + denetim)</li>
+    <li>Projede görev alacak ekip yapısı ve sorumluluklar</li>
+    <li>Benzer ölçekte tamamlanmış otel iç mimari referansları</li>
+    <li>Konsept aşamasında öngörülen revizyon tur sayısı</li>
+    <li>Samsun'a saha ziyareti için ulaşım/konaklama giderleri teklife dahil mi?</li>
   </ul>
 </div>
 
-<!-- ═══════ 06 — TAKVİM & İLETİŞİM ═══════ -->
+<!-- ═══════ 06 — TAKVİM ═══════ -->
 <div class="page">
   <div class="section-num">06</div>
   <div class="section-title">TAKVİM</div>
-  <div class="section-subtitle">& İletişim</div>
+  <div class="section-subtitle">& Süreç</div>
   <div class="section-bar"></div>
 
-  <h4>Süreç Adımları</h4>
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-step">1</div>
       <div class="timeline-content">
-        <div class="timeline-title">Talep Dosyası Gönderimi</div>
+        <div class="timeline-title">Guideline Gönderimi</div>
         <div class="timeline-desc">Bu dokümanın ofislere iletilmesi — Nisan 2026</div>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-step">2</div>
       <div class="timeline-content">
-        <div class="timeline-title">İlk Toplantı</div>
-        <div class="timeline-desc">Yüz yüze veya online tanışma toplantısı — proje detaylarının paylaşılması, Pinterest panosunun incelenmesi, soru-cevap</div>
+        <div class="timeline-title">Tanışma Toplantısı</div>
+        <div class="timeline-desc">Yüz yüze veya online — proje detaylarının paylaşılması, mimari projenin sunulması, görsel referansların incelenmesi</div>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-step">3</div>
       <div class="timeline-content">
-        <div class="timeline-title">Teklif Alımı</div>
-        <div class="timeline-desc">Ofislerden yazılı teklif beklenmesi — toplantıdan itibaren 2 hafta içinde</div>
+        <div class="timeline-title">Yazılı Teklif</div>
+        <div class="timeline-desc">Toplantıdan itibaren 2 hafta içinde yazılı teklif beklenmektedir</div>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-step">4</div>
       <div class="timeline-content">
-        <div class="timeline-title">Değerlendirme & Karar</div>
-        <div class="timeline-desc">Tekliflerin karşılaştırılması ve nihai ofis seçimi</div>
+        <div class="timeline-title">Değerlendirme</div>
+        <div class="timeline-desc">Tekliflerin karşılaştırmalı değerlendirmesi ve ofis seçimi</div>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-step">5</div>
       <div class="timeline-content">
         <div class="timeline-title">Sözleşme & Başlangıç</div>
-        <div class="timeline-desc">Seçilen ofis ile sözleşme imzalanması ve konsept çalışmasının başlatılması</div>
+        <div class="timeline-desc">Seçilen ofis ile sözleşme imzalanması, mimari projenin teslimi ve konsept çalışmasının başlatılması</div>
       </div>
     </div>
   </div>
 
   <hr class="sep">
 
-  <h4>İletişim Bilgileri</h4>
-  <p><strong>Proje Sahibi:</strong> Ercan Karamangil</p>
-  <p><strong>Mimari Danışman:</strong> CCA Mimarlık — Çağlar Çelik</p>
+  <h4>İletişim</h4>
+  <p><strong>Proje Sahibi:</strong> Marin Otel</p>
   <p><strong>Konum:</strong> Samsun, Atakum</p>
 
   <hr class="sep">
 
   <div style="text-align:center; padding: 24px 0;">
-    <p style="font-size:11px; color:var(--mid-gray); letter-spacing:1px;">Bu doküman, Marin Otel projesi kapsamında<br>davet edilen iç mimarlık ofislerine özel olarak hazırlanmıştır.</p>
-    <p style="font-size:10px; color:var(--light-gray); margin-top:8px;">Nisan 2026 — CCA Mimarlık</p>
+    <p style="font-size:10px; color:var(--light-gray); letter-spacing:1px;">Marin Otel — Interior Design Guideline — Nisan 2026</p>
   </div>
 </div>
 
