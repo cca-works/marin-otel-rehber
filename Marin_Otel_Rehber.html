@@ -227,14 +227,30 @@
 
   @media (max-width: 480px) {
     .cover h1 { font-size: 32px; }
+    .cover h2 { font-size: 18px; }
+    .cover h3 { font-size: 15px; }
+    .cover-content { padding: 30px 20px; }
+    .cover-info { padding: 20px; }
     .cover-info-grid { grid-template-columns: 1fr; }
     .page { padding: 20px 16px; }
+    .section-num { font-size: 32px; }
+    .section-title { font-size: 20px; }
+    .section-subtitle { font-size: 18px; }
+    .office-name { font-size: 16px; }
     .pyramid-row { flex-wrap: wrap; gap: 6px; }
     .pyramid-label { width: 100%; text-align: left; }
     .pyramid-value { width: auto; }
     .concept-result-alts { flex-direction: column; }
     .roadmap-body { padding: 4px 0 20px 12px; }
+    .hero-img { height: 180px; }
+    .img-grid img { height: 140px; }
+    .office-layout img { height: 180px; }
+    .rating-row { flex-wrap: wrap; gap: 6px; }
   }
+
+  /* Table responsive wrapper */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; }
+  .table-wrap table { min-width: 600px; }
 
   @media print {
     .cover { height: auto; min-height: 100vh; }
@@ -660,6 +676,42 @@ if(sessionStorage.getItem('marin-auth')==='1'){
 
   <hr class="separator">
 
+  <!-- ASLI ARIKAN — DESIGNIST -->
+  <div class="office-card">
+    <div class="office-card-bar"></div>
+    <div class="office-name">ASLI ARIKAN DAYIOĞLU — DESIGNIST</div>
+    <div class="office-tagline">RISD mezunu · Museum Hotel Antakya, Moxy İstanbul, Titanic Berlin · 17+ yıl hospitality iç mimarisi</div>
+    <div class="office-layout">
+      <img src="images/17-siamoore-mondrian-doha.jpg" alt="Designist - Museum Hotel Antakya">
+      <div>
+        <div class="meta-item"><div class="meta-label">KURULUŞ</div><div class="meta-value">2007, İstanbul (Anadolu yakası)</div></div>
+        <div class="meta-item"><div class="meta-label">KURUCU</div><div class="meta-value">Aslı Arıkan Dayıoğlu (Rhode Island School of Design)</div></div>
+        <div class="meta-item"><div class="meta-label">KONUM</div><div class="meta-value">İstanbul</div></div>
+        <div class="meta-item"><div class="meta-label">DOĞRULANMIŞ PROJELER</div><div class="meta-value">Museum Hotel Antakya (17.132 m² — NYT "52 Must-See"), Moxy Afrika Han İstanbul (168 oda, Marriott), Titanic Comfort Berlin, Lamartine Hotel Taksim, DoubleTree Şanlıurfa, DoubleTree Çanakkale</div></div>
+        <div class="meta-item"><div class="meta-label">WEB</div><div class="meta-value">designist.com.tr</div></div>
+      </div>
+    </div>
+    <p class="img-caption">Designist — Museum Hotel Antakya, Balance Spa (AHEAD Awards Shortlist 2020)</p>
+    <p>Aslı Arıkan Dayıoğlu, RISD'de Güzel Sanatlar ve İç Mimarlık eğitimi almıştır. Designist'i kurmadan önce Sinan Kafadar yönetiminde Metex'te 7 yıl otel tasarımı deneyimi edinmiştir. Museum Hotel Antakya projesi New York Times tarafından dünyanın 52 görülmesi gereken yerinden biri seçilmiştir. Moxy Afrika Han ile Marriott'un Türkiye'deki ilk Moxy otelini tasarlamıştır.</p>
+    <div class="analysis-grid">
+      <div><h5>GÜÇLÜ YÖNLER</h5><ul>
+        <li>Otel iç mimarisi birincil uzmanlık alanı — hospitality DNA'sı</li>
+        <li>Museum Hotel Antakya: Dünya çapında tanınmış, ödüllü proje</li>
+        <li>Hem büyük zincir (Hilton, Marriott) hem butik otel deneyimi</li>
+        <li>Lamartine Hotel: Butik ölçekte kültürel referans çalışması</li>
+        <li>RISD eğitimi + 7 yıl Metex deneyimi = güçlü tasarım altyapısı</li>
+      </ul></div>
+      <div class="concerns"><h5>DİKKAT EDİLECEKLER</h5><ul>
+        <li>Samsun/Karadeniz bölgesinde bilinen projesi yok</li>
+        <li>Fiyat segmenti teyit edilmeli</li>
+        <li>Museum Hotel gibi büyük ölçekli projelerden butik ölçeğe geçiş uyumu sorgulanmalı</li>
+      </ul></div>
+    </div>
+    <div class="rating-row"><span class="rating-label">PROJE UYUM</span><div class="rating-bar"><div class="rating-fill" style="width:90%"></div></div><span class="rating-score">4.5/5</span></div>
+  </div>
+
+  <hr class="separator">
+
   <!-- SIA MOORE -->
   <div class="office-card">
     <div class="office-card-bar"></div>
@@ -818,11 +870,13 @@ if(sessionStorage.getItem('marin-auth')==='1'){
   <div class="section-subtitle">ve SWOT Analizleri</div>
   <div class="section-bar"></div>
 
+  <div class="table-wrap">
   <table style="font-size:11px;">
     <thead><tr><th>OFİS</th><th>GRP</th><th>OTEL DEN.</th><th>BUTİK UYM.</th><th>UYG. PRJ.</th><th>TEDARİK</th><th>GENEL</th></tr></thead>
     <tbody>
       <tr class="group-a"><td class="td-bold">Geo ID</td><td>A</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td><strong>5/5</strong></td></tr>
       <tr class="group-a"><td class="td-bold">Autoban</td><td>A</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td><strong>5/5</strong></td></tr>
+      <tr class="group-a"><td class="td-bold">Designist (A. Arıkan)</td><td>A</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td><strong>4.5/5</strong></td></tr>
       <tr class="group-a"><td class="td-bold">Sia Moore</td><td>A&#8594;B</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell mid">■■■□□</td><td>3/5</td></tr>
       <tr class="group-a"><td class="td-bold">Alya Mimarlık</td><td>A&#8594;B</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■■</td><td>3/5</td></tr>
       <tr class="group-a"><td class="td-bold">Hayri Atak</td><td>A&#8594;C</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■□□□□</td><td>2/5</td></tr>
@@ -834,6 +888,7 @@ if(sessionStorage.getItem('marin-auth')==='1'){
       <tr class="group-b"><td class="td-bold">MAA</td><td>B</td><td class="matrix-cell low">■□□□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■□□□□</td><td>2/5</td></tr>
     </tbody>
   </table>
+  </div>
   <p style="font-size:10px; color:var(--mid-gray);"><strong>NOT:</strong> Sia Moore, Alya ve Hayri Atak bilgi doğrulama sonrası puanları düşürülmüştür. "A&#8594;B" notasyonu grup değişikliği önerisini gösterir.</p>
 
   <h4>SWOT — GEO ID (1. ÖNCELİK)</h4>
