@@ -348,6 +348,40 @@
 </head>
 <body>
 
+<!-- ═══════ LOGIN EKRANI ═══════ -->
+<div id="login-overlay" style="position:fixed;inset:0;z-index:99999;background:#0A0A0A;display:flex;align-items:center;justify-content:center;">
+  <div style="background:#1A1A1A;padding:48px;border-radius:4px;width:380px;text-align:center;">
+    <div style="width:60px;height:3px;background:#C0392B;margin:0 auto 24px;"></div>
+    <h1 style="font-family:'Inter',sans-serif;font-size:28px;font-weight:900;color:white;letter-spacing:-1px;margin-bottom:4px;">MARİN OTEL</h1>
+    <p style="font-size:12px;color:#999;letter-spacing:2px;font-weight:500;margin-bottom:32px;">ARAŞTIRMA REHBERİ</p>
+    <input id="login-user" type="text" placeholder="Kullanıcı Adı" style="width:100%;padding:12px 16px;margin-bottom:12px;background:#2D2D2D;border:1px solid #3D3D3D;border-radius:3px;color:white;font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+    <input id="login-pass" type="password" placeholder="Şifre" style="width:100%;padding:12px 16px;margin-bottom:8px;background:#2D2D2D;border:1px solid #3D3D3D;border-radius:3px;color:white;font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+    <p id="login-error" style="font-size:11px;color:#C0392B;margin-bottom:12px;display:none;">Kullanıcı adı veya şifre hatalı.</p>
+    <button onclick="doLogin()" style="width:100%;padding:12px;background:#C0392B;color:white;border:none;border-radius:3px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;">GİRİŞ YAP</button>
+  </div>
+</div>
+<div id="main-content" style="display:none;">
+
+<script>
+function doLogin(){
+  var u=document.getElementById('login-user').value;
+  var p=document.getElementById('login-pass').value;
+  if(u==='ercan'&&p==='marin2026'){
+    document.getElementById('login-overlay').style.display='none';
+    document.getElementById('main-content').style.display='block';
+    sessionStorage.setItem('marin-auth','1');
+  }else{
+    document.getElementById('login-error').style.display='block';
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+document.getElementById('login-user').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('login-pass').focus();});
+if(sessionStorage.getItem('marin-auth')==='1'){
+  document.getElementById('login-overlay').style.display='none';
+  document.getElementById('main-content').style.display='block';
+}
+</script>
+
 <!-- ═══════ KAPAK ═══════ -->
 <section class="cover">
   <div class="cover-bg"></div>
@@ -1591,5 +1625,6 @@ document.querySelectorAll('.quiz-opt').forEach(opt => {
 });
 </script>
 
+</div><!-- /main-content -->
 </body>
 </html>
