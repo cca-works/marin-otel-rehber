@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marin Otel — İç Mimar Ofis Araştırma Rehberi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --near-black: #1A1A1A;
+    --charcoal: #2D2D2D;
+    --dark-gray: #3D3D3D;
+    --warm-gray: #6B6B6B;
+    --mid-gray: #999;
+    --light-gray: #CCC;
+    --pale-gray: #E8E8E8;
+    --off-white: #F4F4F2;
+    --warm-white: #FAF9F6;
+    --accent-red: #C0392B;
+    --accent-teal: #1A6B6A;
+    --accent-gold: #B8860B;
+    --accent-blue: #2C5F7C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; color: var(--charcoal); background: white; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  .cover { height: 100vh; min-height: 800px; background: var(--near-black); position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; page-break-after: always; }
+  .cover-bg { position: absolute; inset: 0; background: url('images/15-geo-id-maxx-royal-bodrum.jpg') center/cover; opacity: 0.3; filter: brightness(0.7) saturate(0.8); }
+  .cover-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.8) 100%); }
+  .cover-content { position: relative; z-index: 2; padding: 60px; }
+  .cover-tag { font-size: 11px; font-weight: 700; color: var(--accent-red); letter-spacing: 3px; margin-bottom: 8px; }
+  .cover-tag::before { content: ''; display: block; width: 80px; height: 3px; background: var(--accent-red); margin-bottom: 16px; }
+  .cover h1 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 72px; color: white; letter-spacing: -2px; line-height: 1; margin-top: 16px; }
+  .cover h2 { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 24px; color: #AAA; margin-top: 8px; }
+  .cover-line { width: 120px; height: 1px; background: #444; margin: 32px 0; }
+  .cover h3 { font-weight: 600; font-size: 18px; color: white; line-height: 1.4; }
+  .cover-scope { font-size: 13px; color: #888; margin-top: 12px; }
+  .cover-info { position: relative; z-index: 2; padding: 40px 60px 60px; border-top: 1px solid #333; }
+  .cover-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cover-info-item label { display: block; font-size: 9px; font-weight: 700; color: var(--mid-gray); letter-spacing: 2px; margin-bottom: 4px; }
+  .cover-info-item span { font-size: 14px; color: #CCC; }
+
+  .page { max-width: 900px; margin: 0 auto; padding: 60px; page-break-after: always; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--near-black); margin-bottom: 48px; font-size: 9px; color: var(--mid-gray); letter-spacing: 1.5px; font-weight: 500; }
+
+  .section-num { font-size: 64px; font-weight: 800; color: var(--pale-gray); line-height: 1; margin-bottom: -8px; }
+  .section-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 28px; color: var(--near-black); letter-spacing: -0.5px; }
+  .section-subtitle { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 28px; color: var(--warm-gray); margin-bottom: 8px; }
+  .section-bar { width: 60px; height: 3px; background: var(--accent-red); margin: 12px 0 32px; }
+
+  .lead { font-size: 15px; line-height: 1.7; color: var(--near-black); margin-bottom: 24px; }
+  p { margin-bottom: 12px; font-size: 13px; }
+  h4 { font-size: 16px; font-weight: 700; color: var(--near-black); margin: 24px 0 8px; }
+  h4::after { content: ''; display: block; width: 30px; height: 2px; background: var(--near-black); margin-top: 6px; }
+
+  .toc-item { display: flex; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--pale-gray); }
+  .toc-num { font-size: 22px; font-weight: 800; color: var(--pale-gray); width: 50px; flex-shrink: 0; }
+  .toc-text strong { font-size: 14px; color: var(--near-black); }
+  .toc-text span { display: block; font-size: 11px; color: var(--mid-gray); margin-top: 2px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  thead th { background: var(--near-black); color: white; padding: 10px 12px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 1px; }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid var(--pale-gray); }
+  tbody tr:nth-child(even) { background: var(--off-white); }
+  .td-bold { font-weight: 700; }
+
+  .hero-img { width: 100%; height: 300px; object-fit: cover; border-radius: 2px; margin-bottom: 6px; }
+  .img-caption { font-size: 10px; color: var(--mid-gray); margin-bottom: 20px; }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .img-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 2px; }
+
+  .office-card { margin-bottom: 40px; page-break-inside: avoid; }
+  .office-card-bar { width: 40px; height: 3px; background: var(--accent-teal); margin-bottom: 8px; }
+  .office-name { font-size: 20px; font-weight: 800; color: var(--near-black); letter-spacing: -0.3px; }
+  .office-tagline { font-size: 12px; color: var(--warm-gray); margin-bottom: 16px; }
+  .office-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; margin-bottom: 16px; }
+  .office-layout img { width: 100%; height: 240px; object-fit: cover; border-radius: 2px; }
+  .meta-item { margin-bottom: 10px; }
+  .meta-label { font-size: 9px; font-weight: 700; color: var(--mid-gray); letter-spacing: 1.5px; margin-bottom: 2px; }
+  .meta-value { font-size: 13px; color: var(--near-black); }
+  .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+  .analysis-grid h5 { font-size: 11px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+  .analysis-grid ul { list-style: none; padding: 0; }
+  .analysis-grid li { font-size: 12px; padding: 4px 0 4px 16px; position: relative; }
+  .analysis-grid li::before { content: '\2022'; position: absolute; left: 0; color: var(--accent-teal); font-weight: 700; }
+  .concerns li::before { color: var(--accent-gold); }
+
+  .rating-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .rating-label { font-size: 9px; font-weight: 700; color: var(--mid-gray); letter-spacing: 1px; }
+  .rating-bar { width: 120px; height: 8px; background: var(--pale-gray); border-radius: 4px; overflow: hidden; }
+  .rating-fill { height: 100%; border-radius: 4px; background: var(--accent-teal); }
+  .rating-fill.mid { background: var(--accent-gold); }
+  .rating-fill.low { background: var(--mid-gray); }
+  .rating-score { font-size: 14px; font-weight: 800; color: var(--accent-teal); }
+  .rating-score.mid { color: var(--accent-gold); }
+  .separator { border: none; border-top: 1px solid var(--pale-gray); margin: 32px 0; }
+
+  .b-card { padding: 16px 0; border-bottom: 1px solid var(--pale-gray); }
+  .b-card-bar { width: 24px; height: 2px; background: var(--accent-gold); margin-bottom: 6px; }
+  .b-name { font-size: 14px; font-weight: 700; color: var(--near-black); }
+  .b-meta { font-size: 10px; color: var(--mid-gray); margin-bottom: 6px; }
+  .b-desc { font-size: 12px; margin-bottom: 6px; }
+  .b-strengths { font-size: 11px; color: var(--warm-gray); }
+
+  .matrix-cell { font-size: 11px; letter-spacing: 1px; text-align: center; }
+  .matrix-cell.high { color: var(--accent-teal); }
+  .matrix-cell.mid { color: var(--accent-gold); }
+  .matrix-cell.low { color: var(--mid-gray); }
+  .group-a { background: #F0FAF0 !important; }
+  .group-b { background: #FFFBF0 !important; }
+
+  .palette { display: flex; gap: 4px; margin: 16px 0; }
+  .swatch { flex: 1; text-align: center; }
+  .swatch-color { height: 48px; border-radius: 2px; margin-bottom: 4px; }
+  .swatch-label { font-size: 9px; color: var(--warm-gray); }
+
+  .pullquote { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--accent-teal); line-height: 1.5; padding: 24px 0; border-top: 2px solid var(--accent-teal); border-bottom: 1px solid var(--pale-gray); margin: 24px 0; }
+  .note-box { background: #FFF8E1; border-left: 3px solid var(--accent-gold); padding: 16px 20px; margin: 20px 0; font-size: 12px; }
+  .note-box.green { background: #E8F5E9; border-color: #2E7D32; }
+  .note-box.red { background: #FFEBEE; border-color: #C62828; }
+
+  .rec-table tbody td:first-child { font-size: 18px; font-weight: 800; text-align: center; color: var(--accent-red); }
+
+  /* ── Quiz ── */
+  .quiz-box { background: var(--near-black); color: white; padding: 32px; border-radius: 4px; margin: 20px 0; }
+  .quiz-q { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: white; }
+  .quiz-q::after { display: none; }
+  .quiz-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .quiz-opt { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 14px; border: 1px solid #444; border-radius: 4px; transition: all 0.2s; font-size: 13px; }
+  .quiz-opt:hover { border-color: var(--accent-teal); background: rgba(26,107,106,0.1); }
+  .quiz-opt input { accent-color: var(--accent-teal); }
+  .quiz-opt.selected { border-color: var(--accent-teal); background: rgba(26,107,106,0.15); }
+  .quiz-btn { background: var(--accent-red); color: white; border: none; padding: 12px 32px; font-size: 13px; font-weight: 700; letter-spacing: 1px; cursor: pointer; border-radius: 3px; margin-top: 8px; }
+  .quiz-btn:hover { background: #A93226; }
+  .quiz-btn:disabled { background: #555; cursor: not-allowed; }
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; }
+  .quiz-progress { display: flex; gap: 6px; margin-bottom: 20px; }
+  .quiz-dot { width: 32px; height: 4px; background: #444; border-radius: 2px; transition: background 0.3s; }
+  .quiz-dot.done { background: var(--accent-teal); }
+  .quiz-dot.current { background: var(--accent-red); }
+  #quiz-result { display: none; }
+  #quiz-result .result-card { background: rgba(26,107,106,0.15); border: 2px solid var(--accent-teal); padding: 24px; border-radius: 4px; margin: 16px 0; }
+  #quiz-result .result-name { font-size: 24px; font-weight: 800; color: var(--accent-teal); }
+  #quiz-result .result-why { font-size: 13px; color: #CCC; margin-top: 8px; }
+  .runner-up { padding: 12px; border: 1px solid #444; border-radius: 4px; margin: 8px 0; }
+  .runner-up-name { font-size: 14px; font-weight: 700; color: #CCC; }
+
+  /* ── SWOT ── */
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 20px 0; }
+  .swot-cell { padding: 20px; }
+  .swot-cell h5 { font-size: 12px; font-weight: 800; letter-spacing: 1px; margin-bottom: 10px; }
+  .swot-cell h5::after { display: none; }
+  .swot-cell ul { list-style: none; padding: 0; }
+  .swot-cell li { font-size: 11px; padding: 3px 0 3px 14px; position: relative; }
+  .swot-cell li::before { content: '\2022'; position: absolute; left: 0; font-weight: 700; }
+  .swot-s { background: #E8F5E9; }
+  .swot-s h5 { color: #2E7D32; }
+  .swot-s li::before { color: #2E7D32; }
+  .swot-w { background: #FFEBEE; }
+  .swot-w h5 { color: #C62828; }
+  .swot-w li::before { color: #C62828; }
+  .swot-o { background: #E3F2FD; }
+  .swot-o h5 { color: #1565C0; }
+  .swot-o li::before { color: #1565C0; }
+  .swot-t { background: #FFF3E0; }
+  .swot-t h5 { color: #E65100; }
+  .swot-t li::before { color: #E65100; }
+
+  /* ── Cost ── */
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .cost-card { border: 1px solid var(--pale-gray); border-radius: 4px; padding: 20px; }
+  .cost-card-header { font-size: 13px; font-weight: 700; color: var(--near-black); margin-bottom: 4px; }
+  .cost-range { font-size: 22px; font-weight: 800; margin: 8px 0; }
+  .cost-range.teal { color: var(--accent-teal); }
+  .cost-range.gold { color: var(--accent-gold); }
+  .cost-range.red { color: var(--accent-red); }
+  .cost-detail { font-size: 11px; color: var(--warm-gray); }
+  .cost-total { background: var(--near-black); color: white; padding: 20px; border-radius: 4px; margin: 20px 0; }
+  .cost-total-range { font-size: 28px; font-weight: 900; color: var(--accent-teal); }
+
+  .eval-badge { display: inline-block; padding: 3px 10px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: 1px; }
+  .eval-badge.best { background: #E8F5E9; color: #2E7D32; }
+  .eval-badge.good { background: #E3F2FD; color: #1565C0; }
+  .eval-badge.caution { background: #FFF3E0; color: #E65100; }
+  .eval-badge.danger { background: #FFEBEE; color: #C62828; }
+
+  .correction { background: #FFEBEE; border-left: 3px solid #C62828; padding: 12px 16px; margin: 12px 0; font-size: 12px; }
+  .correction strong { color: #C62828; }
+
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 42px; }
+    .cover h2 { font-size: 16px; }
+    .cover-content { padding: 32px 24px; }
+    .cover-info { padding: 24px; }
+    .cover-info-grid { grid-template-columns: 1fr 1fr; }
+    .page { padding: 28px 20px; }
+    .section-num { font-size: 40px; }
+    .section-title { font-size: 22px; }
+    .section-subtitle { font-size: 22px; }
+    .office-layout { grid-template-columns: 1fr; }
+    .office-layout img { height: 200px; }
+    .img-grid { grid-template-columns: 1fr; }
+    .analysis-grid { grid-template-columns: 1fr; }
+    .cost-grid { grid-template-columns: 1fr; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .tier-grid { grid-template-columns: 1fr; }
+    .tier-card { border-right: none; border-bottom: 1px solid var(--pale-gray); }
+    .tier-card:last-child { border-bottom: none; }
+    .blindspot-grid { grid-template-columns: 1fr; }
+    .pyramid-label { width: 120px; font-size: 10px; }
+    .pyramid-value { width: 90px; font-size: 10px; }
+    .pyramid-bar span { font-size: 9px; }
+    .fpp-table { font-size: 10px; }
+    .fpp-table thead th { font-size: 8px; padding: 8px 6px; }
+    .fpp-table tbody td { padding: 8px 6px; }
+    table { font-size: 11px; }
+    thead th { font-size: 9px; padding: 8px; }
+    tbody td { padding: 8px; }
+    .roadmap-item { grid-template-columns: 44px 1fr; }
+    .concept-result-header { flex-direction: column; gap: 8px; }
+    .pullquote { font-size: 16px; }
+    .cost-total { padding: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .cover h1 { font-size: 32px; }
+    .cover-info-grid { grid-template-columns: 1fr; }
+    .page { padding: 20px 16px; }
+    .pyramid-row { flex-wrap: wrap; gap: 6px; }
+    .pyramid-label { width: 100%; text-align: left; }
+    .pyramid-value { width: auto; }
+    .concept-result-alts { flex-direction: column; }
+    .roadmap-body { padding: 4px 0 20px 12px; }
+  }
+
+  @media print {
+    .cover { height: auto; min-height: 100vh; }
+    .page { padding: 40px; }
+    .quiz-box { display: none; }
+    .concept-grid { display: block; }
+    .concept-result { display: block !important; }
+  }
+
+  /* ── Concept Selector ── */
+  .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 0; }
+  .concept-card { border: 2px solid var(--pale-gray); border-radius: 4px; overflow: hidden; cursor: pointer; transition: all 0.25s; position: relative; }
+  .concept-card:hover { border-color: #AAA; transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+  .concept-card.active { border-color: var(--accent-teal); box-shadow: 0 6px 24px rgba(26,107,106,0.2); }
+  .concept-card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+  .concept-card-body { padding: 14px; }
+  .concept-card-num { font-size: 9px; font-weight: 800; color: var(--mid-gray); letter-spacing: 2px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+  .concept-check { width: 18px; height: 18px; background: var(--accent-teal); border-radius: 50%; display: none; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: white; line-height: 1; }
+  .concept-card.active .concept-check { display: flex; }
+  .concept-card-name { font-size: 14px; font-weight: 800; color: var(--near-black); margin-bottom: 6px; }
+  .concept-card-desc { font-size: 11px; color: var(--warm-gray); line-height: 1.5; }
+  .concept-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+  .concept-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 2px; background: var(--pale-gray); color: var(--warm-gray); }
+  .concept-result { display: none; background: var(--near-black); color: white; padding: 24px 28px; border-radius: 4px; margin-top: 16px; animation: fadeIn 0.3s ease; }
+  .concept-result.show { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .concept-result-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+  .concept-result-tag { font-size: 9px; font-weight: 800; color: var(--accent-teal); letter-spacing: 2px; margin-bottom: 4px; }
+  .concept-result-office { font-size: 22px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+  .concept-result-badge { font-size: 9px; font-weight: 700; padding: 4px 10px; background: var(--accent-teal); color: white; border-radius: 3px; white-space: nowrap; align-self: flex-start; margin-top: 4px; }
+  .concept-result-why { font-size: 12px; color: #BBB; line-height: 1.7; border-top: 1px solid #333; padding-top: 12px; margin-top: 12px; }
+  .concept-result-alts { display: flex; gap: 8px; margin-top: 12px; }
+  .concept-result-alt { font-size: 10px; color: #888; border: 1px solid #444; padding: 4px 10px; border-radius: 3px; }
+  .concept-result-alt span { color: #AAA; font-weight: 600; }
+
+  /* ── Tiered Pricing ── */
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 20px 0; border: 1px solid var(--pale-gray); border-radius: 4px; overflow: hidden; }
+  .tier-card { padding: 22px 20px; border-right: 1px solid var(--pale-gray); position: relative; }
+  .tier-card:last-child { border-right: none; }
+  .tier-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; margin-bottom: 6px; color: var(--mid-gray); }
+  .tier-name { font-size: 15px; font-weight: 800; color: var(--near-black); margin-bottom: 8px; }
+  .tier-scope { font-size: 10px; color: var(--warm-gray); line-height: 1.6; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--pale-gray); }
+  .tier-scope li { list-style: none; padding: 1px 0 1px 12px; position: relative; }
+  .tier-scope li::before { content: '–'; position: absolute; left: 0; color: var(--mid-gray); }
+  .tier-price { font-size: 22px; font-weight: 900; margin: 4px 0 2px; }
+  .tier-price-sub { font-size: 10px; color: var(--warm-gray); }
+  .tier-highlight { background: var(--accent-teal); }
+  .tier-highlight .tier-label { color: rgba(255,255,255,0.6); }
+  .tier-highlight .tier-name { color: white; }
+  .tier-highlight .tier-scope { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.15); }
+  .tier-highlight .tier-scope li::before { color: rgba(255,255,255,0.5); }
+  .tier-highlight .tier-price { color: white; }
+  .tier-highlight .tier-price-sub { color: rgba(255,255,255,0.7); }
+  .tier-rec-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--accent-red); color: white; font-size: 8px; font-weight: 800; letter-spacing: 1px; padding: 3px 10px; border-radius: 0 0 4px 4px; }
+
+  /* ── Cost Pyramid ── */
+  .pyramid-wrap { margin: 20px 0; }
+  .pyramid-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .pyramid-label { width: 200px; font-size: 11px; font-weight: 600; color: var(--near-black); text-align: right; flex-shrink: 0; }
+  .pyramid-bar-wrap { flex: 1; height: 34px; background: var(--pale-gray); border-radius: 2px; overflow: hidden; }
+  .pyramid-bar { height: 100%; border-radius: 2px; display: flex; align-items: center; padding: 0 12px; transition: width 0.6s ease; }
+  .pyramid-bar span { font-size: 11px; font-weight: 700; color: white; white-space: nowrap; }
+  .pyramid-value { width: 140px; font-size: 11px; font-weight: 800; color: var(--near-black); flex-shrink: 0; }
+
+  /* ── FPP Matrix ── */
+  .fpp-table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 20px 0; }
+  .fpp-table thead th { background: var(--near-black); color: white; padding: 10px 12px; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+  .fpp-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--pale-gray); }
+  .fpp-table .row-best td { background: #F0FAF0; }
+  .fpp-stars { color: var(--accent-teal); letter-spacing: 1px; }
+  .fpp-stars.mid { color: var(--accent-gold); }
+  .fpp-stars.low { color: var(--mid-gray); }
+  .verdict-best { font-weight: 800; color: #2E7D32; font-size: 11px; }
+  .verdict-good { font-weight: 700; color: #1565C0; }
+  .verdict-mid { color: var(--warm-gray); }
+
+  /* ── Blindspot Cards ── */
+  .blindspot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  .blindspot-card { border-radius: 4px; padding: 16px; border-left: 3px solid; }
+  .blindspot-card.critical { background: #FFF5F5; border-color: var(--accent-red); }
+  .blindspot-card.warning { background: #FFFBF0; border-color: var(--accent-gold); }
+  .blindspot-card.info { background: #F0F4FF; border-color: var(--accent-blue); }
+  .blindspot-icon { font-size: 18px; margin-bottom: 6px; }
+  .blindspot-title { font-size: 12px; font-weight: 800; margin-bottom: 5px; }
+  .blindspot-card.critical .blindspot-title { color: #C62828; }
+  .blindspot-card.warning .blindspot-title { color: #E65100; }
+  .blindspot-card.info .blindspot-title { color: #1565C0; }
+  .blindspot-desc { font-size: 11px; color: var(--warm-gray); line-height: 1.55; }
+
+  /* ── Roadmap ── */
+  .roadmap { padding: 4px 0; }
+  .roadmap-item { display: grid; grid-template-columns: 56px 1fr; gap: 0; position: relative; }
+  .roadmap-item::after { content: ''; position: absolute; left: 27px; top: 40px; bottom: 0; width: 2px; background: var(--pale-gray); }
+  .roadmap-item:last-child::after { display: none; }
+  .roadmap-left { display: flex; flex-direction: column; align-items: center; padding-top: 6px; }
+  .roadmap-circle { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 1; }
+  .roadmap-circle.now { background: var(--accent-red); }
+  .roadmap-circle.soon { background: var(--accent-teal); }
+  .roadmap-circle.later { background: var(--mid-gray); }
+  .roadmap-circle span { font-size: 10px; font-weight: 800; color: white; }
+  .roadmap-period { font-size: 8px; font-weight: 700; color: var(--mid-gray); letter-spacing: 1px; margin-top: 5px; text-align: center; line-height: 1.3; }
+  .roadmap-body { padding: 4px 0 28px 20px; }
+  .roadmap-phase { font-size: 9px; font-weight: 800; letter-spacing: 2px; color: var(--mid-gray); margin-bottom: 3px; }
+  .roadmap-title { font-size: 14px; font-weight: 800; color: var(--near-black); margin-bottom: 4px; }
+  .roadmap-detail { font-size: 11px; color: var(--warm-gray); line-height: 1.6; }
+  .roadmap-action { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 3px 9px; border-radius: 2px; margin-top: 6px; }
+  .roadmap-action.now { background: var(--accent-red); color: white; }
+  .roadmap-action.soon { background: #E3F2FD; color: #1565C0; }
+  .roadmap-action.later { background: var(--pale-gray); color: var(--warm-gray); }
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOGIN EKRANI ═══════ -->
+<div id="login-overlay" style="position:fixed;inset:0;z-index:99999;background:#0A0A0A;display:flex;align-items:center;justify-content:center;">
+  <div style="background:#1A1A1A;padding:48px;border-radius:4px;width:380px;text-align:center;">
+    <div style="width:60px;height:3px;background:#C0392B;margin:0 auto 24px;"></div>
+    <h1 style="font-family:'Inter',sans-serif;font-size:28px;font-weight:900;color:white;letter-spacing:-1px;margin-bottom:4px;">MARİN OTEL</h1>
+    <p style="font-size:12px;color:#999;letter-spacing:2px;font-weight:500;margin-bottom:32px;">ARAŞTIRMA REHBERİ</p>
+    <input id="login-user" type="text" placeholder="Kullanıcı Adı" style="width:100%;padding:12px 16px;margin-bottom:12px;background:#2D2D2D;border:1px solid #3D3D3D;border-radius:3px;color:white;font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+    <input id="login-pass" type="password" placeholder="Şifre" style="width:100%;padding:12px 16px;margin-bottom:8px;background:#2D2D2D;border:1px solid #3D3D3D;border-radius:3px;color:white;font-family:'Inter',sans-serif;font-size:14px;outline:none;">
+    <p id="login-error" style="font-size:11px;color:#C0392B;margin-bottom:12px;display:none;">Kullanıcı adı veya şifre hatalı.</p>
+    <button onclick="doLogin()" style="width:100%;padding:12px;background:#C0392B;color:white;border:none;border-radius:3px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;">GİRİŞ YAP</button>
+  </div>
+</div>
+<div id="main-content" style="display:none;">
+
+<script>
+function doLogin(){
+  var u=document.getElementById('login-user').value;
+  var p=document.getElementById('login-pass').value;
+  if(u==='ercan'&&p==='marin2026'){
+    document.getElementById('login-overlay').style.display='none';
+    document.getElementById('main-content').style.display='block';
+    sessionStorage.setItem('marin-auth','1');
+  }else{
+    document.getElementById('login-error').style.display='block';
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+document.getElementById('login-user').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('login-pass').focus();});
+if(sessionStorage.getItem('marin-auth')==='1'){
+  document.getElementById('login-overlay').style.display='none';
+  document.getElementById('main-content').style.display='block';
+}
+</script>
+
+<!-- ═══════ KAPAK ═══════ -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <div class="cover-tag">ARAŞTIRMA REHBERİ  |  MART 2026</div>
+    <h1>MARİN OTEL</h1>
+    <h2>Samsun  |  Atakum</h2>
+    <div class="cover-line"></div>
+    <h3>İç Mimar Ofis Araştırma<br>ve Karşılaştırma Rehberi</h3>
+    <p class="cover-scope">Konsept Tasarım  +  Uygulama Projesi  +  FF&amp;E Tedarik  +  Maliyet Analizi</p>
+  </div>
+  <div class="cover-info">
+    <div class="cover-info-grid">
+      <div class="cover-info-item"><label>PROJE</label><span>Marin Otel Yeni Bina</span></div>
+      <div class="cover-info-item"><label>KONUM</label><span>Atakum, Samsun</span></div>
+      <div class="cover-info-item"><label>ÖLÇEK</label><span>79 Oda · 11.075 m² · 166 Yatak</span></div>
+      <div class="cover-info-item"><label>KONSEPT</label><span>Modern Butik Otel</span></div>
+      <div class="cover-info-item"><label>DOKÜMAN</label><span>İç Mimar Seçim Rehberi v3</span></div>
+      <div class="cover-info-item"><label>TARİH</label><span>Mart 2026</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ İÇİNDEKİLER ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  İÇ MİMAR OFİS ARAŞTIRMA REHBERİ</span><span>MART 2026</span></div>
+  <div class="section-title">İÇİNDEKİLER</div>
+  <div class="section-bar"></div>
+  <div class="toc-item"><span class="toc-num">01</span><div class="toc-text"><strong>Proje Özeti ve İhtiyaç Analizi</strong><span>Teknik veriler, kapsam, konsept vizyonu</span></div></div>
+  <div class="toc-item"><span class="toc-num">02</span><div class="toc-text"><strong>Araştırma Metodolojisi</strong><span>Kaynaklar ve değerlendirme kriterleri</span></div></div>
+  <div class="toc-item"><span class="toc-num">03</span><div class="toc-text"><strong>Ofis Eşleştirme Testi</strong><span>5 soruda projenize en uygun ofisi bulun</span></div></div>
+  <div class="toc-item"><span class="toc-num">04</span><div class="toc-text"><strong>Öncelikli Adaylar (A Grubu)</strong><span>Detaylı analiz — doğrulanmış bilgiler</span></div></div>
+  <div class="toc-item"><span class="toc-num">05</span><div class="toc-text"><strong>Prestijli Ofisler (B Grubu)</strong><span>Tanınmış ama ölçek uyumu düşük ofisler</span></div></div>
+  <div class="toc-item"><span class="toc-num">06</span><div class="toc-text"><strong>Ek Adaylar (C Grubu)</strong><span>Alternatif adaylar</span></div></div>
+  <div class="toc-item"><span class="toc-num">07</span><div class="toc-text"><strong>Karşılaştırma Tablosu + SWOT</strong><span>Puanlama matrisi ve SWOT analizleri</span></div></div>
+  <div class="toc-item"><span class="toc-num">08</span><div class="toc-text"><strong>Konsept Vizyonu + Konsept Seçici</strong><span>3 tasarım konsepti · interaktif ofis eşleştirme</span></div></div>
+  <div class="toc-item"><span class="toc-num">09</span><div class="toc-text"><strong>Maliyet Analizi</strong><span>Kademeli proje ücreti · ince inşaat · FF&E · toplam yatırım</span></div></div>
+  <div class="toc-item"><span class="toc-num">10</span><div class="toc-text"><strong>Fiyat-Performans · Riskler · Kör Noktalar</strong><span>Optimizasyon matrisi, doğruluk kontrolleri, gözden kaçanlar</span></div></div>
+  <div class="toc-item"><span class="toc-num">11</span><div class="toc-text"><strong>Nihai Öneri · Yol Haritası · İletişim</strong><span>Adım adım takvim, öncelikli ofisler, sözleşme öncesi kontrol</span></div></div>
+</div>
+
+<!-- ═══════ 01 PROJE ÖZETİ ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>01 — PROJE ÖZETİ</span></div>
+  <div class="section-num">01</div>
+  <div class="section-title">PROJE ÖZETİ</div>
+  <div class="section-subtitle">İhtiyaç Analizi</div>
+  <div class="section-bar"></div>
+
+  <img src="images/17-siamoore-mondrian-doha.jpg" class="hero-img" alt="Modern otel lobi referansı">
+  <p class="img-caption">Referans: Modern otel lobi tasarımı — hedeflenen kalite seviyesi</p>
+
+  <p class="lead">Samsun Atakum'da inşa edilecek Marin Otel, 79 oda ve 166 yatak kapasiteli modern bir butik otel olarak planlanmaktadır. Mimari projesi tamamlanmış olan bina için iç mimari tasarım, uygulama projeleri ve tedarik rehberliği verecek bir ofis aranmaktadır.</p>
+
+  <h4>TEKNİK VERİLER</h4>
+  <table>
+    <thead><tr><th>PARAMETRE</th><th>DEĞER</th><th>PARAMETRE</th><th>DEĞER</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Parsel Alanı</td><td>3.031,68 m²</td><td class="td-bold">Oda Sayısı</td><td>79 oda</td></tr>
+      <tr><td class="td-bold">Toplam İnşaat</td><td>11.075,35 m²</td><td class="td-bold">Yatak Kapasitesi</td><td>166 yatak</td></tr>
+      <tr><td class="td-bold">Kat Sayısı</td><td>2B + Z + 3K + ÇK</td><td class="td-bold">Otopark</td><td>27 adet</td></tr>
+      <tr><td class="td-bold">Otel Sınıfı</td><td>4 Yıldız / Butik</td><td class="td-bold">Mimari Proje</td><td>Tamamlandı</td></tr>
+    </tbody>
+  </table>
+
+  <div class="img-grid">
+    <div><img src="images/02-hotel-room.jpg" alt="Otel oda"><p class="img-caption">Referans: Kaliteli otel oda tasarımı</p></div>
+    <div><img src="images/13-geo-id-bebek-hotel.jpg" alt="Restoran"><p class="img-caption">Referans: Otel restoran iç mekanı</p></div>
+  </div>
+
+  <h4>İÇ MİMAR OFİSTEN BEKLENEN KAPSAM</h4>
+  <table>
+    <thead><tr><th>HİZMET</th><th>DETAY</th><th>KRİTİKLİK</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Konsept Tasarım</td><td>Tüm mekanlar için konsept sunum</td><td>Zorunlu</td></tr>
+      <tr><td class="td-bold">Uygulama Projeleri</td><td>Detaylı teknik çizimler, imalat projeleri</td><td>Zorunlu</td></tr>
+      <tr><td class="td-bold">FF&amp;E Seçimi</td><td>Mobilya, aydınlatma, aksesuar seçim/tasarım</td><td>Zorunlu</td></tr>
+      <tr><td class="td-bold">Malzeme Şartnamesi</td><td>Tüm mekanlar için malzeme listesi</td><td>Zorunlu</td></tr>
+      <tr><td class="td-bold">Tedarik Rehberliği</td><td>Tedarikçi önerileri, fiyat karşılaştırması</td><td>Tercih</td></tr>
+      <tr><td class="td-bold">Uygulama Takibi</td><td>Samsun'daki yerel firma ile koordinasyon</td><td>Tercih</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <strong>KRİTİK:</strong> Uygulama Samsun'da yerel firmalarla yapılacaktır. Uygulama projelerinin detaylı, net ve uzaktan uygulanabilir olması şarttır.
+  </div>
+</div>
+
+<!-- ═══════ 02 METODOLOJİ ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>02 — METODOLOJİ</span></div>
+  <div class="section-num">02</div>
+  <div class="section-title">ARAŞTIRMA</div>
+  <div class="section-subtitle">Metodolojisi</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">13 ofis, 6 kriter üzerinden değerlendirilmiştir. Tüm bilgiler ofislerin resmi web siteleri, LinkedIn profilleri ve bağımsız mimarlık platformlarından (ArchDaily, Archello, Dezeen) doğrulanmıştır.</p>
+
+  <h4>DEĞERLENDİRME KRİTERLERİ</h4>
+  <table>
+    <thead><tr><th>#</th><th>KRİTER</th><th>AÇIKLAMA</th><th>AĞIRLIK</th></tr></thead>
+    <tbody>
+      <tr><td>01</td><td class="td-bold">Otel Deneyimi</td><td>Tamamlanmış ve doğrulanmış otel projelerinin sayısı/kalitesi</td><td>%25</td></tr>
+      <tr><td>02</td><td class="td-bold">Butik/Konsept Uyumu</td><td>79 odalı modern butik otele yakınlık</td><td>%20</td></tr>
+      <tr><td>03</td><td class="td-bold">Uygulama Projesi</td><td>Detaylı teknik çizim ve şartname üretme yetkinliği</td><td>%20</td></tr>
+      <tr><td>04</td><td class="td-bold">Ölçek Uyumu</td><td>~11.000 m² projeye ekip ve kapasite uyumu</td><td>%15</td></tr>
+      <tr><td>05</td><td class="td-bold">Tedarik Rehberliği</td><td>Mobilya ve malzeme tedarik yönlendirme kapasitesi</td><td>%10</td></tr>
+      <tr><td>06</td><td class="td-bold">Uzaktan Çalışma</td><td>İstanbul'dan Samsun'a uzaktan proje yürütme</td><td>%10</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════ 03 ELİMİNASYON TESTİ ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>03 — OFİS EŞLEŞTİRME</span></div>
+  <div class="section-num">03</div>
+  <div class="section-title">OFİS EŞLEŞTİRME</div>
+  <div class="section-subtitle">Testi</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">Aşağıdaki 5 soruyu cevaplayarak projeniz için en uygun iç mimari ofisi bulun. Her soru bir kriteri temsil eder; sonuçta size en uygun eşleşme hesaplanır.</p>
+
+  <div class="quiz-box" id="quiz">
+    <div class="quiz-progress" id="quiz-progress">
+      <div class="quiz-dot current"></div>
+      <div class="quiz-dot"></div>
+      <div class="quiz-dot"></div>
+      <div class="quiz-dot"></div>
+      <div class="quiz-dot"></div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-step active" data-step="0">
+      <h4 class="quiz-q" style="color:white;">1 / 5 — Bütçe önceliğiniz nedir?</h4>
+      <div class="quiz-opts">
+        <label class="quiz-opt"><input type="radio" name="q0" value="budget"> Mümkün olan en uygun fiyat — kaliteden biraz ödün verilebilir</label>
+        <label class="quiz-opt"><input type="radio" name="q0" value="balanced"> Fiyat-performans dengesi — kalite de önemli ama bütçe de</label>
+        <label class="quiz-opt"><input type="radio" name="q0" value="premium"> En iyi tasarımı istiyoruz — bütçe ikincil</label>
+      </div>
+      <button class="quiz-btn" onclick="nextStep(0)">Devam</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-step" data-step="1">
+      <h4 class="quiz-q" style="color:white;">2 / 5 — Tasarım tarzı tercihiniz?</h4>
+      <div class="quiz-opts">
+        <label class="quiz-opt"><input type="radio" name="q1" value="safe"> Kanıtlanmış, güvenli, ödüllü — risk almak istemiyoruz</label>
+        <label class="quiz-opt"><input type="radio" name="q1" value="modern"> Modern ve çağdaş — farklı ama aşırı deneysel değil</label>
+        <label class="quiz-opt"><input type="radio" name="q1" value="bold"> Cesur ve deneysel — dikkat çekici bir tasarım olsun</label>
+      </div>
+      <button class="quiz-btn" onclick="nextStep(1)">Devam</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-step" data-step="2">
+      <h4 class="quiz-q" style="color:white;">3 / 5 — Uygulama projesi ne kadar kritik?</h4>
+      <div class="quiz-opts">
+        <label class="quiz-opt"><input type="radio" name="q2" value="critical"> Çok kritik — Samsun'daki ekip projeye bakıp birebir uygulayacak</label>
+        <label class="quiz-opt"><input type="radio" name="q2" value="important"> Önemli ama yerel ekip de tecrübeli, biraz esneklik var</label>
+        <label class="quiz-opt"><input type="radio" name="q2" value="flexible"> Konsept yeterli — detayları yerinde çözeriz</label>
+      </div>
+      <button class="quiz-btn" onclick="nextStep(2)">Devam</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-step" data-step="3">
+      <h4 class="quiz-q" style="color:white;">4 / 5 — Ofis ölçeği tercihiniz?</h4>
+      <div class="quiz-opts">
+        <label class="quiz-opt"><input type="radio" name="q3" value="boutique"> Küçük/orta ölçekli butik ofis — bize özel ilgi göstersinler</label>
+        <label class="quiz-opt"><input type="radio" name="q3" value="mid"> Orta ölçekli, deneyimli ofis — denge önemli</label>
+        <label class="quiz-opt"><input type="radio" name="q3" value="big"> Büyük, tanınmış ofis — isim ve prestij önemli</label>
+      </div>
+      <button class="quiz-btn" onclick="nextStep(3)">Devam</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-step" data-step="4">
+      <h4 class="quiz-q" style="color:white;">5 / 5 — Tedarik yönetimi ne kadar önemli?</h4>
+      <div class="quiz-opts">
+        <label class="quiz-opt"><input type="radio" name="q4" value="turnkey"> Çok önemli — anahtar teslim, mobilya dahil her şeyi yönlendirsinler</label>
+        <label class="quiz-opt"><input type="radio" name="q4" value="guide"> Rehberlik yeterli — listeler versinler, biz tedarik edelim</label>
+        <label class="quiz-opt"><input type="radio" name="q4" value="design"> Tasarım yeterli — tedariki kendimiz hallederiz</label>
+      </div>
+      <button class="quiz-btn" onclick="showResult()">Sonucu Gör</button>
+    </div>
+
+    <!-- Result -->
+    <div id="quiz-result">
+      <h4 class="quiz-q" style="color:white;">Projeniz için en uygun eşleşme:</h4>
+      <div class="result-card">
+        <div class="result-name" id="result-name"></div>
+        <div class="result-why" id="result-why"></div>
+      </div>
+      <p style="font-size:11px; color:#888; margin-top:8px;">Alternatifler:</p>
+      <div id="result-alts"></div>
+      <button class="quiz-btn" onclick="resetQuiz()" style="margin-top:16px; background:var(--accent-teal);">Testi Tekrarla</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 04 A GRUBU ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>04 — ÖNCELİKLİ ADAYLAR</span></div>
+  <div class="section-num">04</div>
+  <div class="section-title">ÖNCELİKLİ ADAYLAR</div>
+  <div class="section-subtitle">A Grubu</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">Bilgileri bağımsız kaynaklardan doğrulanmış, projeye en uygun adaylar.</p>
+
+  <!-- GEO ID -->
+  <div class="office-card">
+    <div class="office-card-bar"></div>
+    <div class="office-name">MAHMUT ANLAR — GEO ID</div>
+    <div class="office-tagline">Otel ve restoran iç mimarisinde 30+ yıl · Maxx Royal, W Istanbul, Bebek Hotel</div>
+    <div class="office-layout">
+      <img src="images/15-geo-id-maxx-royal-bodrum.jpg" alt="Geo ID - Maxx Royal Bodrum">
+      <div>
+        <div class="meta-item"><div class="meta-label">KURULUŞ</div><div class="meta-value">1991 (GeoMIM) / 2013 (Geo_ID)</div></div>
+        <div class="meta-item"><div class="meta-label">KURUCULAR</div><div class="meta-value">Mahmut Anlar + Tuğçe Rizeli Bilgi</div></div>
+        <div class="meta-item"><div class="meta-label">KONUM</div><div class="meta-value">İstanbul (House of Geo bünyesinde)</div></div>
+        <div class="meta-item"><div class="meta-label">DOĞRULANMIŞ PROJELER</div><div class="meta-value">Maxx Royal Kemer, CAJA by Maxx Royal Bodrum, Hisvahan Hotel Gaziantep, W Istanbul, Bebek Hotel İstanbul</div></div>
+        <div class="meta-item"><div class="meta-label">WEB</div><div class="meta-value">geo-id.com</div></div>
+      </div>
+    </div>
+    <p class="img-caption">Geo ID — CAJA by Maxx Royal Bodrum lobi (Identity Design Awards kazananı)</p>
+    <p>Mahmut Anlar, Mimar Sinan Güzel Sanatlar Üniversitesi mezunu olup 30 yılı aşkın iç mimarlık deneyimiyle Türkiye'nin otel iç mimarisinde en derin referanslara sahip isimlerinden biridir. House of Geo bünyesinde GEO_ID, GEOMIM, GEOSTUDIO gibi farklı kollarla çalışmaktadır.</p>
+    <div class="analysis-grid">
+      <div><h5>GÜÇLÜ YÖNLER</h5><ul>
+        <li>Otel iç mimarisi birincil iş kolu — hospitality DNA'sı</li>
+        <li>Maxx Royal Kemer ve Bodrum: Türkiye'nin en prestijli otel zincirleri</li>
+        <li>W Istanbul, Bebek Hotel gibi farklı ölçeklerde kanıtlanmış deneyim</li>
+        <li>CAJA by Maxx Royal: Identity Design Awards "Best Hotel Interior"</li>
+      </ul></div>
+      <div class="concerns"><h5>DİKKAT EDİLECEKLER</h5><ul>
+        <li>Büyük zincir otel ağırlıklı — butik ölçek yaklaşımı teyit edilmeli</li>
+        <li>Ekip büyüklüğü kamuya açık değil</li>
+      </ul></div>
+    </div>
+    <div class="rating-row"><span class="rating-label">PROJE UYUM</span><div class="rating-bar"><div class="rating-fill" style="width:100%"></div></div><span class="rating-score">5/5</span></div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- AUTOBAN -->
+  <div class="office-card">
+    <div class="office-card-bar"></div>
+    <div class="office-name">AUTOBAN</div>
+    <div class="office-tagline">Seyhan Özdemir &amp; Sefer Çağlar — Wallpaper* ödüllü, 20+ yıllık uluslararası stüdyo</div>
+    <div class="office-layout">
+      <img src="images/12-autoban-slider.jpg" alt="Autoban - JOALI Being">
+      <div>
+        <div class="meta-item"><div class="meta-label">KURULUŞ</div><div class="meta-value">2003, Beyoğlu, İstanbul</div></div>
+        <div class="meta-item"><div class="meta-label">KURUCULAR</div><div class="meta-value">Seyhan Özdemir (Sarper) &amp; Sefer Çağlar</div></div>
+        <div class="meta-item"><div class="meta-label">DOĞRULANMIŞ PROJELER</div><div class="meta-value">Witt Istanbul (18 oda butik), Hilton Istanbul Bosphorus (renovasyon, devam ediyor), ME Malta (2023), JOALI Being Maldives (2021)</div></div>
+        <div class="meta-item"><div class="meta-label">WEB</div><div class="meta-value">autoban.com</div></div>
+      </div>
+    </div>
+    <p class="img-caption">Autoban — JOALI Being Maldives (IFI Design Distinction Awards 2024 Bronze)</p>
+    <p>2003'ten bu yana aktif olan Autoban, Wallpaper* "Best Young Designers" (2004), Red Dot, AHEAD Awards gibi onlarca uluslararası ödüle sahiptir. Witt Istanbul 18 odalı butik oteli, Marin Otel'in ölçeğiyle doğrudan karşılaştırılabilir bir referanstır. Aralık 2025'te Akbank Genel Müdürlük projesiyle Interior Design Magazine "Best of Year" listesine girmiştir.</p>
+    <div class="analysis-grid">
+      <div><h5>GÜÇLÜ YÖNLER</h5><ul>
+        <li>Witt Istanbul: 18 odalı butik otel — Marin Otel DNA'sına en yakın referans</li>
+        <li>20+ yıl, sürekli aktif, Aralık 2025'te bile ödül alan stüdyo</li>
+        <li>Doğal malzeme ustalığı (ahşap, deri, taş)</li>
+        <li>ME Malta, JOALI Being ile farklı coğrafyalarda otel deneyimi</li>
+      </ul></div>
+      <div class="concerns"><h5>DİKKAT EDİLECEKLER</h5><ul>
+        <li>Premium fiyat segmenti — bütçe uyumu mutlaka sorgulanmalı</li>
+        <li>Hilton renovasyonu devam ediyor — takvim yoğunluğu kontrol edilmeli</li>
+      </ul></div>
+    </div>
+    <div class="rating-row"><span class="rating-label">PROJE UYUM</span><div class="rating-bar"><div class="rating-fill" style="width:100%"></div></div><span class="rating-score">5/5</span></div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- SIA MOORE -->
+  <div class="office-card">
+    <div class="office-card-bar"></div>
+    <div class="office-name">SIA MOORE</div>
+    <div class="office-tagline">Architecture Interior Design — Lüks mekan tasarımı ve fit-out uzmanlığı</div>
+    <div class="office-layout">
+      <img src="images/17-siamoore-mondrian-doha.jpg" alt="Mondrian Doha">
+      <div>
+        <div class="meta-item"><div class="meta-label">KURULUŞ</div><div class="meta-value">2009, İstanbul (Kadıköy)</div></div>
+        <div class="meta-item"><div class="meta-label">KURUCU</div><div class="meta-value">Banu Altay (İTÜ Mimarlık)</div></div>
+        <div class="meta-item"><div class="meta-label">DOĞRULANMIŞ PROJELER</div><div class="meta-value">Mondrian Doha (fit-out), Pearl Palace Doha (2.200 m²), özel malikane projeleri</div></div>
+        <div class="meta-item"><div class="meta-label">WEB</div><div class="meta-value">siamoore.com</div></div>
+      </div>
+    </div>
+
+    <div class="correction">
+      <strong>DÜZELTME:</strong> Mondrian Doha Hotel'in iç mekan tasarımını Marcel Wanders yaptı. Sia Moore'un rolü <strong>fit-out müteahhitliği</strong> (uygulama, imalat, montaj) idi — tasarımcı değil. Bu önemli bir ayrımdır.
+    </div>
+
+    <p>Banu Altay tarafından kurulan Sia Moore, İstanbul, Doha ve Londra ofisleriyle lüks segmentte faaliyet göstermektedir. Mondrian Doha'daki rolü tasarım değil uygulama olsa da, bu deneyim uluslararası standartlarda fit-out kapasitesini kanıtlamaktadır. Luxury Lifestyle Awards 2015 "National Brand of Turkey" ödülü sahibidir.</p>
+
+    <div class="analysis-grid">
+      <div><h5>GÜÇLÜ YÖNLER</h5><ul>
+        <li>Uluslararası standartlarda fit-out/uygulama yetkinliği</li>
+        <li>Lüks malzeme ve detay bilgisi</li>
+        <li>Hem tasarım hem uygulama yapabilme kapasitesi</li>
+      </ul></div>
+      <div class="concerns"><h5>DİKKAT EDİLECEKLER</h5><ul>
+        <li>Tasarımcı değil uygulama müteahhidi rolü ağırlıklı</li>
+        <li>Bağımsız otel tasarımı referansı zayıf</li>
+        <li>Ultra-lüks yönelim, butik konseptle uyum sorgulanmalı</li>
+      </ul></div>
+    </div>
+    <div class="rating-row"><span class="rating-label">PROJE UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- ALYA -->
+  <div class="office-card">
+    <div class="office-card-bar"></div>
+    <div class="office-name">ALYA MİMARLIK</div>
+    <div class="office-tagline">E+M dahil bütüncül iç mimarlık — anahtar teslim hizmet modeli</div>
+    <div class="office-layout">
+      <img src="images/14-geo-id-dragon-restaurant.jpg" alt="Otel restoran referans">
+      <div>
+        <div class="meta-item"><div class="meta-label">KURULUŞ</div><div class="meta-value">2005, İstanbul</div></div>
+        <div class="meta-item"><div class="meta-label">ANA UZMANLIK</div><div class="meta-value">Ofis, villa, mağaza iç mimarisi (otel ikincil)</div></div>
+        <div class="meta-item"><div class="meta-label">DOĞRULANMIŞ ÖZELLİK</div><div class="meta-value">Alya Elektrik + Alya Mekanik alt markaları ile E+M dahil hizmet</div></div>
+        <div class="meta-item"><div class="meta-label">WEB</div><div class="meta-value">alyamimarlik.com.tr</div></div>
+      </div>
+    </div>
+
+    <div class="correction">
+      <strong>DÜZELTME:</strong> "400+ proje" iddiası tutarsız — firmanın kendi sitesinde hem "300+" hem "400+" yazıyor. Asıl uzmanlık alanı ofis/villa/mağaza; otel projesi referansı sınırlı (sadece Muğla Ba-i Otel doğrulandı). "Guest journey yaklaşımı" doğrulanamadı.
+    </div>
+
+    <p>Alya Mimarlık'ın en güçlü yönü, Alya Elektrik ve Alya Mekanik alt markaları ile iç mimarlık + E + M hizmetlerini tek çatı altında sunabilmesidir. Bu model, Samsun'daki gibi uzaktan yönetilen projelerde koordinasyon avantajı sağlayabilir.</p>
+
+    <div class="analysis-grid">
+      <div><h5>GÜÇLÜ YÖNLER</h5><ul>
+        <li>E+M dahil tek noktadan bütüncül hizmet — gerçek farklılaşma</li>
+        <li>20 yıllık ofis deneyimi</li>
+        <li>Anahtar teslim model — tedarik dahil</li>
+        <li>Muhtemelen bütçe-dostu fiyat segmenti</li>
+      </ul></div>
+      <div class="concerns"><h5>DİKKAT EDİLECEKLER</h5><ul>
+        <li>Otel referansları çok sınırlı ve doğrulanması zor</li>
+        <li>Ana iş kolu ofis/villa — hospitality DNA'sı yok</li>
+        <li>Proje sayısı iddiası tutarsız</li>
+      </ul></div>
+    </div>
+    <div class="rating-row"><span class="rating-label">PROJE UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- HAYRI ATAK -->
+  <div class="office-card">
+    <div class="office-card-bar"></div>
+    <div class="office-name">HAYRİ ATAK TASARIM (HAADS)</div>
+    <div class="office-tagline">Otel iç mimarisi eğitimli, parametrik tasarıma ilgili genç ofis · 4 kişilik ekip</div>
+    <div class="office-layout">
+      <img src="images/02-hotel-room.jpg" alt="Modern otel odası">
+      <div>
+        <div class="meta-item"><div class="meta-label">KURULUŞ</div><div class="meta-value">2017, Beyoğlu, İstanbul</div></div>
+        <div class="meta-item"><div class="meta-label">EKİP</div><div class="meta-value">4 kişi (mimar)</div></div>
+        <div class="meta-item"><div class="meta-label">EĞİTİM</div><div class="meta-value">İTÜ Y.L. + NABA İtalya (Hotel Design)</div></div>
+        <div class="meta-item"><div class="meta-label">DOĞRULANMIŞ PROJELER</div><div class="meta-value">Fragments Hotel Beyoğlu (2020), Van Grand Hotel, Patnos Hotel (kendi beyanı)</div></div>
+        <div class="meta-item"><div class="meta-label">WEB</div><div class="meta-value">hayriatak.com</div></div>
+      </div>
+    </div>
+
+    <div class="correction">
+      <strong>UYARI:</strong> Portföyü ağırlıklı olarak konseptüel/görselleştirme çalışmalarından oluşuyor (Designboom, STIRworld'da yayınlanan futuristik projeler). Gerçek inşa edilmiş otel projeleri sınırlı ve sadece kendi beyanına dayanıyor. Radical Innovation Award 2022 birinciliği doğrulandı (konsept proje).
+    </div>
+
+    <div class="analysis-grid">
+      <div><h5>GÜÇLÜ YÖNLER</h5><ul>
+        <li>Otel iç mimarisi özelinde akademik eğitim (NABA İtalya)</li>
+        <li>Parametrik tasarım ve hesaplamalı yöntemler</li>
+        <li>Fragments Hotel Beyoğlu — gerçek, çalışan bir otel</li>
+        <li>Radical Innovation Award 2022</li>
+      </ul></div>
+      <div class="concerns"><h5>DİKKAT EDİLECEKLER</h5><ul>
+        <li>4 kişilik ekip — 79 oda kapasitesi ciddi soru işareti</li>
+        <li>İnşa edilmiş projeler çoğunlukla küçük ölçekli ve erken kariyer</li>
+        <li>Uluslararası tanınırlık konseptüel işlere dayanıyor, inşa edilmiş projelere değil</li>
+      </ul></div>
+    </div>
+    <div class="rating-row"><span class="rating-label">PROJE UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div>
+  </div>
+</div>
+
+<!-- ═══════ 05 B GRUBU ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>05 — PRESTİJLİ OFİSLER</span></div>
+  <div class="section-num">05</div>
+  <div class="section-title">PRESTİJLİ OFİSLER</div>
+  <div class="section-subtitle">B Grubu</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">Türkiye'nin en tanınmış isimleri. Otel deneyimleri var ancak ölçek, bütçe veya odak alanı açısından tam eşleşme sağlanamayabilir.</p>
+
+  <div class="b-card"><div class="b-card-bar"></div><div class="b-name">ZEYNEP FADILLIOĞLU DESIGN</div><div class="b-meta">1995, İstanbul · 30 kişi · 500+ proje · zfdesign.com</div><div class="b-desc">Türkiye'nin en tanınmış iç mimarı. Maldivler otel projesi, Şakirin Camii. Ultra-lüks segment — proje için fazla büyük ve premium fiyatlı.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div></div>
+
+  <div class="b-card"><div class="b-card-bar"></div><div class="b-name">GAD ARCHITECTS — GÖKHAN AVCIOĞLU</div><div class="b-meta">1994, İstanbul + NY · gadarchitecture.com</div><div class="b-desc">KUUM Otel (Bodrum), World Luxury Spa Awards. Mimari tasarım ağırlıklı — iç mimari uygulama projesi üretimi net değil.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div></div>
+
+  <div class="b-card"><div class="b-card-bar"></div><div class="b-name">TABANLIOGLU ARCHITECTS</div><div class="b-meta">1990, İstanbul + Dubai · tabanlioglu.com</div><div class="b-desc">Türkiye'nin en büyük mimarlık ofislerinden. Bodrum Loft Hotel. 79 odalık proje öncelik sırasında alt sıralarda kalır.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill low" style="width:40%"></div></div><span class="rating-score mid">2/5</span></div></div>
+
+  <div class="b-card"><div class="b-card-bar"></div><div class="b-name">MELİKE ALTINIŞIK ARCHITECTS (MAA)</div><div class="b-meta">2015, İstanbul + Seul · melikealtinisik.com</div><div class="b-desc">İstanbul TV Kulesi ile tanınmış. Vizyoner mimari — otel iç mimari uygulama deneyimi doğrulanamadı.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill low" style="width:40%"></div></div><span class="rating-score mid">2/5</span></div></div>
+
+  <div class="b-card"><div class="b-card-bar"></div><div class="b-name">ATİLLA KUZU — ZOOM TPU</div><div class="b-meta">1994, İstanbul · zoom.com.tr</div><div class="b-desc">Aga Khan ve WAF adaylıkları. Teknoloji + zanaat. Portföyde hastane ve kamu projeleri ağırlıklı, otel deneyimi sınırlı.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div></div>
+</div>
+
+<!-- ═══════ 06 C GRUBU ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>06 — EK ADAYLAR</span></div>
+  <div class="section-num">06</div>
+  <div class="section-title">EK ADAYLAR</div>
+  <div class="section-subtitle">C Grubu</div>
+  <div class="section-bar"></div>
+
+  <div class="b-card"><div class="b-card-bar" style="background:var(--mid-gray)"></div><div class="b-name">YAPI STÜDYO MİMARLIK</div><div class="b-meta">2006, Sarıyer · yapistudyo.com</div><div class="b-desc">Otel iç mimarisinde uzmanlaşmış, konseptten uygulamaya tam hizmet.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div></div>
+
+  <div class="b-card"><div class="b-card-bar" style="background:var(--mid-gray)"></div><div class="b-name">LARES MİMARLIK</div><div class="b-meta">1997, İstanbul · laresmimarlik.com</div><div class="b-desc">Kendi mobilya üretim atölyesi — tedarik yönetiminde ciddi avantaj. 26+ yıl deneyim.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill mid" style="width:60%"></div></div><span class="rating-score mid">3/5</span></div></div>
+
+  <div class="b-card"><div class="b-card-bar" style="background:var(--mid-gray)"></div><div class="b-name">ODA TASARIM İÇMİMARLIK</div><div class="b-meta">Ankara · odatr.com</div><div class="b-desc">İstanbul Havalimanı Müzesi, Rami Kütüphanesi. Prestijli kamu projeleri — otel deneyimi sınırlı.</div><div class="rating-row"><span class="rating-label">UYUM</span><div class="rating-bar"><div class="rating-fill low" style="width:40%"></div></div><span class="rating-score mid">2/5</span></div></div>
+</div>
+
+<!-- ═══════ 07 KARŞILAŞTIRMA + SWOT ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>07 — KARŞILAŞTIRMA + SWOT</span></div>
+  <div class="section-num">07</div>
+  <div class="section-title">KARŞILAŞTIRMA</div>
+  <div class="section-subtitle">ve SWOT Analizleri</div>
+  <div class="section-bar"></div>
+
+  <table style="font-size:11px;">
+    <thead><tr><th>OFİS</th><th>GRP</th><th>OTEL DEN.</th><th>BUTİK UYM.</th><th>UYG. PRJ.</th><th>TEDARİK</th><th>GENEL</th></tr></thead>
+    <tbody>
+      <tr class="group-a"><td class="td-bold">Geo ID</td><td>A</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td><strong>5/5</strong></td></tr>
+      <tr class="group-a"><td class="td-bold">Autoban</td><td>A</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td><strong>5/5</strong></td></tr>
+      <tr class="group-a"><td class="td-bold">Sia Moore</td><td>A&#8594;B</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell mid">■■■□□</td><td>3/5</td></tr>
+      <tr class="group-a"><td class="td-bold">Alya Mimarlık</td><td>A&#8594;B</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell high">■■■■■</td><td class="matrix-cell high">■■■■■</td><td>3/5</td></tr>
+      <tr class="group-a"><td class="td-bold">Hayri Atak</td><td>A&#8594;C</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■□□□□</td><td>2/5</td></tr>
+      <tr style="border-top:2px solid var(--near-black);"></tr>
+      <tr class="group-b"><td class="td-bold">Z. Fadıllıoğlu</td><td>B</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td>3/5</td></tr>
+      <tr class="group-b"><td class="td-bold">GAD</td><td>B</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■■□□□</td><td>3/5</td></tr>
+      <tr class="group-b"><td class="td-bold">Zoom TPU</td><td>B</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td>3/5</td></tr>
+      <tr class="group-b"><td class="td-bold">Tabanlıoğlu</td><td>B</td><td class="matrix-cell high">■■■■□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell mid">■■■□□</td><td class="matrix-cell low">■■□□□</td><td>2/5</td></tr>
+      <tr class="group-b"><td class="td-bold">MAA</td><td>B</td><td class="matrix-cell low">■□□□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■■□□□</td><td class="matrix-cell low">■□□□□</td><td>2/5</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:10px; color:var(--mid-gray);"><strong>NOT:</strong> Sia Moore, Alya ve Hayri Atak bilgi doğrulama sonrası puanları düşürülmüştür. "A&#8594;B" notasyonu grup değişikliği önerisini gösterir.</p>
+
+  <h4>SWOT — GEO ID (1. ÖNCELİK)</h4>
+  <div class="swot-grid">
+    <div class="swot-cell swot-s"><h5>STRENGTHS</h5><ul><li>30+ yıl otel iç mimarisi</li><li>Maxx Royal, W Istanbul gibi kanıtlanmış referanslar</li><li>Ödüllü projeler (Identity Design Awards)</li></ul></div>
+    <div class="swot-cell swot-w"><h5>WEAKNESSES</h5><ul><li>Büyük zincir otel ağırlıklı — butik ölçek riski</li><li>Ekip büyüklüğü bilinmiyor</li><li>Samsun gibi uzak lokasyonlarda deneyim belirsiz</li></ul></div>
+    <div class="swot-cell swot-o"><h5>OPPORTUNITIES</h5><ul><li>Bebek Hotel (1.860 m²) butik ölçek deneyimi gösteriyor</li><li>House of Geo çoklu marka yapısı esneklik sağlar</li></ul></div>
+    <div class="swot-cell swot-t"><h5>THREATS</h5><ul><li>Premium fiyat beklentisi bütçeyi aşabilir</li><li>Yoğun proje takvimi gecikmelere yol açabilir</li></ul></div>
+  </div>
+
+  <h4>SWOT — AUTOBAN (2. ÖNCELİK)</h4>
+  <div class="swot-grid">
+    <div class="swot-cell swot-s"><h5>STRENGTHS</h5><ul><li>Witt Istanbul: butik otel DNA'sının birebir kanıtı</li><li>Uluslararası ödül portföyü</li><li>Storytelling odaklı benzersiz yaklaşım</li></ul></div>
+    <div class="swot-cell swot-w"><h5>WEAKNESSES</h5><ul><li>Premium fiyat segmenti</li><li>Hilton renovasyonu devam ediyor — kapasite riski</li></ul></div>
+    <div class="swot-cell swot-o"><h5>OPPORTUNITIES</h5><ul><li>Samsun'un hikayesi (Karadeniz, liman) storytelling'e uygun</li><li>Witt deneyimini 79 odaya ölçeklendirme potansiyeli</li></ul></div>
+    <div class="swot-cell swot-t"><h5>THREATS</h5><ul><li>Bütçe aşımı riski yüksek</li><li>Takvim gecikmesi riski</li></ul></div>
+  </div>
+</div>
+
+<!-- ═══════ 08 KONSEPT VE MALZEME ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>08 — KONSEPT VİZYONU</span></div>
+  <div class="section-num">08</div>
+  <div class="section-title">KONSEPT VE</div>
+  <div class="section-subtitle">Malzeme Vizyonu</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">Modern butik otel konsepti: Karadeniz kıyısının doğal dokusunu çağdaş tasarım diliyle harmanlayan, sürdürülebilir ve teknoloji entegreli bir misafir deneyimi.</p>
+
+  <h4>KONSEPT DEĞERLENDİRMESİ</h4>
+  <div class="note-box green">
+    <strong>SONUÇ:</strong> Mevcut konsept yönü (Karadeniz ilhamı, toprak tonları, doğal malzeme) modern butik otel trendleriyle uyumlu. Ancak aşağıdaki güncellemeler önerilir:
+  </div>
+
+  <table>
+    <thead><tr><th>TREND</th><th>ÖNERİ</th><th>UYGULAMA</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Biyofilik Tasarım</td><td>İç mekan bitkilendirme, doğal ışık maksimizasyonu</td><td>Lobi iç bahçesi, yeşil duvarlar, teras bahçesi</td></tr>
+      <tr><td class="td-bold">Akıllı Oda</td><td>IoT tabanlı oda kontrol sistemi</td><td>Aydınlatma, klima, perde otomasyon; dijital concierge</td></tr>
+      <tr><td class="td-bold">Yerel Kimlik</td><td>Samsun/Karadeniz kültürel referansları</td><td>Yerel sanat, bakır işçiliği, Karadeniz tekstili</td></tr>
+      <tr><td class="td-bold">Sürdürülebilirlik</td><td>Enerji verimliliği, yerel malzeme kullanımı</td><td>LED aydınlatma, geri dönüşümlü malzeme, su tasarrufu</td></tr>
+      <tr><td class="td-bold">Deneyim Tasarımı</td><td>Instagram-worthy anlar, duyu tasarımı</td><td>Feature wall, koku, müzik, dokunsal malzeme</td></tr>
+    </tbody>
+  </table>
+
+  <h4>RENK PALETİ</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#F5F0EB"></div><div class="swatch-label">Sıcak Beyaz</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D4C5B2"></div><div class="swatch-label">Kum</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B7355"></div><div class="swatch-label">Sıcak Kahve</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4A6741"></div><div class="swatch-label">Orman</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2C5F7C"></div><div class="swatch-label">Karadeniz</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1A3A4A"></div><div class="swatch-label">Lacivert</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#B87333"></div><div class="swatch-label">Bakır</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2D2D2D"></div><div class="swatch-label">Kömür</div></div>
+  </div>
+
+  <h4>MEKAN BAZLI MALZEME</h4>
+  <table>
+    <thead><tr><th>MEKAN</th><th>ZEMİN</th><th>DUVAR</th><th>AKSAN</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Lobi</td><td>Doğal mermer / granit</td><td>Ahşap kaplama + sıva</td><td>Pirinç / bakır detay, iç bahçe</td></tr>
+      <tr><td class="td-bold">Oda</td><td>Meşe parke</td><td>Dokuma kaplama + boya</td><td>Keten/kadife tekstil, akıllı panel</td></tr>
+      <tr><td class="td-bold">Restoran</td><td>Terrazzo / seramik</td><td>Tuğla + sıva</td><td>Bitki, ahşap, bakır aydınlatma</td></tr>
+      <tr><td class="td-bold">Banyo</td><td>Büyük format taş</td><td>Mermer mozaik</td><td>Mat siyah / pirinç armatür</td></tr>
+      <tr><td class="td-bold">Teras</td><td>Dış mekan seramik</td><td>Ahşap + sıva</td><td>Pergola, bitkilendirme, IP65 aydınlatma</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <strong>KARADENİZ İKLİMİ UYARISI:</strong> Samsun'un nemli iklimi malzeme seçiminde belirleyicidir. Ahşap kaplamalar için nem dayanıklı türler (tik, iroko), banyo malzemelerinde anti-küf çözümler, dış mekan mobilyalarında korozyona dayanıklı seçenekler zorunludur. Seçilecek iç mimar bu konuda bilgilendirilmelidir.
+  </div>
+
+  <h4>KONSEPT SEÇİCİ — OFİS EŞLEŞTİRMESİ</h4>
+  <p style="font-size:12px; color:var(--warm-gray);">Marin Otel için önerilen 3 farklı tasarım yönünden birini seçin. Konseptinize en uygun ofis otomatik olarak önerilecektir.</p>
+
+  <div class="concept-grid" id="conceptGrid">
+
+    <div class="concept-card" onclick="selectConcept(this, 'warm')" id="concept-warm">
+      <img src="images/15-geo-id-maxx-royal-bodrum.jpg" alt="Karadeniz Modern konsept">
+      <div class="concept-card-body">
+        <div class="concept-card-num">KONSEPT 01 <span class="concept-check">✓</span></div>
+        <div class="concept-card-name">KARADENİZ MODERN</div>
+        <div class="concept-card-desc">Karadeniz'in doğal dokusundan ilham alan, toprak tonları ve organik malzemeleri çağdaş tasarım diliyle buluşturan sıcak butik kimlik.</div>
+        <div class="concept-tags">
+          <span class="concept-tag">Toprak Tonları</span>
+          <span class="concept-tag">Bakır</span>
+          <span class="concept-tag">Meşe</span>
+          <span class="concept-tag">Yerel Kimlik</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="selectConcept(this, 'urban')" id="concept-urban">
+      <img src="images/11-autoban-galataport.jpg" alt="Urban Chic konsept">
+      <div class="concept-card-body">
+        <div class="concept-card-num">KONSEPT 02 <span class="concept-check">✓</span></div>
+        <div class="concept-card-name">URBAN CHİC</div>
+        <div class="concept-card-desc">Cesur karşıtlıklar, derin tonlar ve dramatik aydınlatmayla şehirli bir lüks dili. İstanbul ve Avrupa butik otel estetiğinin Karadeniz'e taşınması.</div>
+        <div class="concept-tags">
+          <span class="concept-tag">Koyu Tonlar</span>
+          <span class="concept-tag">Pirinç</span>
+          <span class="concept-tag">Mermer</span>
+          <span class="concept-tag">Dramatik</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="selectConcept(this, 'minimal')" id="concept-minimal">
+      <img src="images/modern-hotel-room.jpg" alt="Sade Lüks konsept">
+      <div class="concept-card-body">
+        <div class="concept-card-num">KONSEPT 03 <span class="concept-check">✓</span></div>
+        <div class="concept-card-name">SADE LÜKS</div>
+        <div class="concept-card-desc">Wabi-sabi ilkesinden beslenen, nötr palette, ince detaylar ve doğal tekstürlerle zamansız bir huzur dili. Her şeyi söyleyen sessizlik.</div>
+        <div class="concept-tags">
+          <span class="concept-tag">Krem &amp; Gri</span>
+          <span class="concept-tag">Taş Sıva</span>
+          <span class="concept-tag">Keten</span>
+          <span class="concept-tag">Minimal</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="concept-result" id="conceptResult">
+    <div class="concept-result-header">
+      <div>
+        <div class="concept-result-tag" id="cResultTag">ÖNERİLEN OFİS</div>
+        <div class="concept-result-office" id="cResultOffice">—</div>
+      </div>
+      <div class="concept-result-badge" id="cResultBadge">A GRUBU</div>
+    </div>
+    <div class="concept-result-why" id="cResultWhy">—</div>
+    <div class="concept-result-alts" id="cResultAlts"></div>
+  </div>
+
+</div>
+
+<!-- ═══════ 09 MALİYET ANALİZİ ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>09 — MALİYET ANALİZİ</span></div>
+  <div class="section-num">09</div>
+  <div class="section-title">MALİYET</div>
+  <div class="section-subtitle">Analizi</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">Resmi kaynaklara (TMMOB, Kültür ve Turizm Bakanlığı, Resmi Gazete) dayanan maliyet projeksiyonu. Tüm rakamlar KDV hariç, Mart 2026 kuruyla hesaplanmıştır. Toplam inşaat alanı: <strong>11.075 m²</strong> · Oda sayısı: <strong>79</strong></p>
+
+  <div class="note-box red">
+    <strong>KUR REFERANSI:</strong> 1 USD = 44,47 TL (Mart 2026) · Resmi Gazete No.32799 — 4 yıldız otel yapı birim maliyeti: <strong>35.600 TL/m²</strong>
+  </div>
+
+  <h4>A — İÇ MİMARİ PROJE ÜCRETİ — 3 KADEME</h4>
+  <p style="font-size:11px; color:var(--warm-gray); margin-bottom:16px;">TMMOB İç Mimarlar Odası asgari ücret tarifesi (PAU = YYA × BM × PID × HBO × KK). Kapsam arttıkça ücret artıyor — ne kadar hizmet istediğinize göre doğru kademeyi seçin.</p>
+
+  <div class="tier-grid">
+    <div class="tier-card">
+      <div class="tier-label">KADEME A</div>
+      <div class="tier-name">Sadece Konsept</div>
+      <div class="tier-scope">
+        <ul>
+          <li>Konsept tasarım sunumu</li>
+          <li>Moodboard + renk/malzeme paleti</li>
+          <li>Mekan planlaması (şematik)</li>
+          <li>FF&amp;E yönlendirmesi</li>
+          <li style="color:#C62828;">✗ Uygulama çizimleri yok</li>
+          <li style="color:#C62828;">✗ Yerel firma koordinasyonu yok</li>
+        </ul>
+      </div>
+      <div class="tier-price teal">1,1 — 6,6M TL</div>
+      <div class="tier-price-sub">100 — 600 TL/m² · $24.700 — $148.400</div>
+    </div>
+    <div class="tier-card tier-highlight" style="position:relative;">
+      <div class="tier-rec-badge">ÖNERİLEN</div>
+      <div class="tier-label" style="margin-top:8px;">KADEME B</div>
+      <div class="tier-name">Konsept + Uygulama</div>
+      <div class="tier-scope">
+        <ul>
+          <li>Konsept tasarım (Kademe A dahil)</li>
+          <li>Tüm mekanlar için detay çizimleri</li>
+          <li>Malzeme ve teknik şartname</li>
+          <li>Mobilya + aydınlatma tasarımı</li>
+          <li>Yerel firma koordinasyon desteği</li>
+          <li style="color:rgba(255,255,255,0.5);">✗ Yerinde kontrollük yok</li>
+        </ul>
+      </div>
+      <div class="tier-price" style="color:white;">4,4 — 16,5M TL</div>
+      <div class="tier-price-sub">400 — 1.500 TL/m² · $98.900 — $371.000</div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-label">KADEME C</div>
+      <div class="tier-name">Tam Hizmet</div>
+      <div class="tier-scope">
+        <ul>
+          <li>Kademe B'nin tamamı</li>
+          <li>Uygulama kontrollüğü (site visit)</li>
+          <li>Tedarikçi müzakeresi</li>
+          <li>Teslim öncesi punch-list</li>
+          <li>Uzaktan proje yönetimi</li>
+          <li>Sonsuz revizyon hakkı</li>
+        </ul>
+      </div>
+      <div class="tier-price red">8,8 — 27,5M TL</div>
+      <div class="tier-price-sub">800 — 2.500 TL/m² · $198.000 — $618.000</div>
+    </div>
+  </div>
+
+  <h4>B — İNCE İNŞAAT MALİYETLERİ (4 YILDIZ STANDARDI)</h4>
+  <p style="font-size:11px; color:var(--warm-gray); margin-bottom:12px;">11.075 m² toplam alan için piyasa verileri. Kaba inşaat hariç, iç mekan uygulaması.</p>
+
+  <table>
+    <thead><tr><th>KALEM</th><th>TL/m² (ALT)</th><th>TL/m² (ÜST)</th><th>TOPLAM ALT</th><th>TOPLAM ÜST</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Alçı / Sıva</td><td>800</td><td>1.200</td><td>8,9M TL</td><td>13,3M TL</td></tr>
+      <tr><td class="td-bold">Boya / Duvar Kaplama</td><td>200</td><td>500</td><td>2,2M TL</td><td>5,5M TL</td></tr>
+      <tr><td class="td-bold">Seramik / Doğal Taş</td><td>1.500</td><td>2.500</td><td>16,6M TL</td><td>27,7M TL</td></tr>
+      <tr><td class="td-bold">Ahşap Parke</td><td>800</td><td>1.500</td><td>8,9M TL</td><td>16,6M TL</td></tr>
+      <tr><td class="td-bold">Asma Tavan</td><td>900</td><td>1.400</td><td>10,0M TL</td><td>15,5M TL</td></tr>
+      <tr><td class="td-bold">Elektrik (İnce)</td><td>700</td><td>1.200</td><td>7,8M TL</td><td>13,3M TL</td></tr>
+      <tr><td class="td-bold">Mekanik (İnce)</td><td>600</td><td>1.000</td><td>6,6M TL</td><td>11,1M TL</td></tr>
+      <tr><td class="td-bold">Kapı / Pencere / Cam</td><td>800</td><td>1.500</td><td>8,9M TL</td><td>16,6M TL</td></tr>
+      <tr style="border-top:2px solid var(--near-black); font-weight:800;">
+        <td><strong>TOPLAM İNCE İNŞAAT</strong></td><td><strong>6.300</strong></td><td><strong>10.800</strong></td>
+        <td style="color:var(--accent-teal); font-weight:800;">69,8M TL</td>
+        <td style="color:var(--accent-teal); font-weight:800;">119,8M TL</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>C — FF&amp;E (MOBİLYA, DONATI, EKİPMAN) — ODA BAŞI</h4>
+  <p style="font-size:11px; color:var(--warm-gray); margin-bottom:12px;">4 yıldız standart. 79 oda için. Kamu alanları (lobi, restoran, koridor) ayrıca hesaplanmalıdır.</p>
+
+  <table>
+    <thead><tr><th>KALEM</th><th>ODA BAŞI (ALT)</th><th>ODA BAŞI (ÜST)</th><th>79 ODA TOPLAM</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Mobilya (yatak, koltuk, masa)</td><td>45.500 TL</td><td>142.000 TL</td><td>3,6M — 11,2M TL</td></tr>
+      <tr><td class="td-bold">Banyo Donanımı</td><td>12.000 TL</td><td>49.500 TL</td><td>0,9M — 3,9M TL</td></tr>
+      <tr><td class="td-bold">Aydınlatma Armatürleri</td><td>5.500 TL</td><td>21.000 TL</td><td>0,4M — 1,7M TL</td></tr>
+      <tr><td class="td-bold">Tekstil (yatak, perde, halı)</td><td>12.300 TL</td><td>45.000 TL</td><td>1,0M — 3,6M TL</td></tr>
+      <tr><td class="td-bold">Teknoloji (TV, otomasyon, wifi)</td><td>28.500 TL</td><td>71.000 TL</td><td>2,3M — 5,6M TL</td></tr>
+      <tr style="border-top:2px solid var(--near-black); font-weight:800;">
+        <td><strong>ODA BAŞI TOPLAM</strong></td>
+        <td style="color:var(--accent-teal); font-weight:800;">103.800 TL<br><span style="font-size:9px; font-weight:400; color:var(--warm-gray);">~$2.330</span></td>
+        <td style="color:var(--accent-teal); font-weight:800;">328.500 TL<br><span style="font-size:9px; font-weight:400; color:var(--warm-gray);">~$7.390</span></td>
+        <td style="color:var(--accent-teal); font-weight:800;">8,2M — 26,0M TL</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>D — TOPLAM YATIRIM PİRAMİDİ</h4>
+  <p style="font-size:11px; color:var(--warm-gray); margin-bottom:4px;">Kamu alanı FF&amp;E (~%30 ek) dahil tahmini. KDV hariç, Mart 2026 fiyatlarıyla.</p>
+
+  <div class="pyramid-wrap">
+    <div class="pyramid-row">
+      <div class="pyramid-label">İç Mimari Proje (Kademe B)</div>
+      <div class="pyramid-bar-wrap"><div class="pyramid-bar" style="width:18%; background:var(--accent-blue);"><span>4,4 — 16,5M TL</span></div></div>
+      <div class="pyramid-value" style="color:var(--accent-blue);">$99K–$371K</div>
+    </div>
+    <div class="pyramid-row">
+      <div class="pyramid-label">FF&amp;E (79 oda + kamu alan)</div>
+      <div class="pyramid-bar-wrap"><div class="pyramid-bar" style="width:28%; background:var(--accent-gold);"><span>10,7 — 33,8M TL</span></div></div>
+      <div class="pyramid-value" style="color:var(--accent-gold);">$241K–$760K</div>
+    </div>
+    <div class="pyramid-row">
+      <div class="pyramid-label">İnce İnşaat (11.075 m²)</div>
+      <div class="pyramid-bar-wrap"><div class="pyramid-bar" style="width:75%; background:var(--accent-teal);"><span>69,8 — 119,8M TL</span></div></div>
+      <div class="pyramid-value" style="color:var(--accent-teal);">$1,57M–$2,69M</div>
+    </div>
+    <div class="pyramid-row" style="margin-top:4px;">
+      <div class="pyramid-label" style="font-weight:800; color:var(--near-black);">GENEL TOPLAM</div>
+      <div class="pyramid-bar-wrap"><div class="pyramid-bar" style="width:100%; background:var(--near-black);"><span>84,9M — 170,1M TL</span></div></div>
+      <div class="pyramid-value" style="color:var(--near-black); font-weight:900;">$1,9M–$3,8M</div>
+    </div>
+  </div>
+
+  <div class="cost-total">
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; text-align:center;">
+      <div>
+        <div style="font-size:9px; font-weight:800; color:#888; letter-spacing:2px; margin-bottom:4px;">ALT SENARYO</div>
+        <div style="font-size:24px; font-weight:900; color:var(--accent-teal);">~85M TL</div>
+        <div style="font-size:11px; color:#666;">~$1,9M</div>
+        <div style="font-size:10px; color:#555; margin-top:4px;">Kademe A + Ekonomi FF&amp;E</div>
+      </div>
+      <div style="border-left:1px solid #333; border-right:1px solid #333;">
+        <div style="font-size:9px; font-weight:800; color:var(--accent-teal); letter-spacing:2px; margin-bottom:4px;">ORTA SENARYO</div>
+        <div style="font-size:32px; font-weight:900; color:white;">~126M TL</div>
+        <div style="font-size:13px; color:#AAA;">~$2,84M</div>
+        <div style="font-size:10px; color:#777; margin-top:4px;">Kademe B + 4 yıldız orta FF&amp;E</div>
+      </div>
+      <div>
+        <div style="font-size:9px; font-weight:800; color:#888; letter-spacing:2px; margin-bottom:4px;">ÜST SENARYO</div>
+        <div style="font-size:24px; font-weight:900; color:var(--accent-gold);">~170M TL</div>
+        <div style="font-size:11px; color:#666;">~$3,8M</div>
+        <div style="font-size:10px; color:#555; margin-top:4px;">Kademe C + Premium FF&amp;E</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:10px; color:var(--mid-gray);">Kaynaklar: TMMOB İç Mimarlar Odası asgari ücret tarifesi · Resmi Gazete No.32799 (31.01.2025) · Kültür ve Turizm Bakanlığı 2025 yatırım birim maliyetleri · Piyasa araştırması (2026) · 1 USD = 44,47 TL</p>
+</div>
+
+<!-- ═══════ 10 FİYAT-PERFORMANS + KÖR NOKTALAR ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>10 — FİYAT-PERFORMANS · KÖR NOKTALAR</span></div>
+  <div class="section-num">10</div>
+  <div class="section-title">FİYAT-PERFORMANS</div>
+  <div class="section-subtitle">Optimizasyonu &amp; Kör Noktalar</div>
+  <div class="section-bar"></div>
+
+  <p class="lead">79 odalı, 11.075 m² bir proje için hangi ofis gerçekten en iyi değeri sunuyor? Sadece ücrete değil, riske, hız garantisine ve çıktı kalitesine bakılmıştır.</p>
+
+  <h4>FİYAT-PERFORMANS MATRİSİ</h4>
+
+  <table class="fpp-table">
+    <thead>
+      <tr>
+        <th>OFİS</th>
+        <th>KADEME B FİYAT</th>
+        <th>TASARIM KALİTESİ</th>
+        <th>OTEL DENEYİMİ</th>
+        <th>RİSK</th>
+        <th>FP DEĞERLENDİRME</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-best">
+        <td class="td-bold">Geo ID</td>
+        <td>8 — 16,5M TL</td>
+        <td><span class="fpp-stars">★★★★★</span></td>
+        <td><span class="fpp-stars">★★★★★</span></td>
+        <td><span class="eval-badge best">DÜŞÜK</span></td>
+        <td class="verdict-best">EN İYİ FP ✓</td>
+      </tr>
+      <tr>
+        <td class="td-bold">Lares Mimarlık</td>
+        <td>4,4 — 9M TL</td>
+        <td><span class="fpp-stars mid">★★★★☆</span></td>
+        <td><span class="fpp-stars mid">★★★☆☆</span></td>
+        <td><span class="eval-badge good">DÜŞÜK-ORTA</span></td>
+        <td class="verdict-good">Bütçe kazananı</td>
+      </tr>
+      <tr>
+        <td class="td-bold">Zoom TPU</td>
+        <td>4,4 — 11M TL</td>
+        <td><span class="fpp-stars mid">★★★★☆</span></td>
+        <td><span class="fpp-stars mid">★★★☆☆</span></td>
+        <td><span class="eval-badge good">ORTA</span></td>
+        <td class="verdict-good">İyi alternatif</td>
+      </tr>
+      <tr>
+        <td class="td-bold">Autoban</td>
+        <td>16,5 — 33M TL</td>
+        <td><span class="fpp-stars">★★★★★</span></td>
+        <td><span class="fpp-stars">★★★★★</span></td>
+        <td><span class="eval-badge good">ORTA</span></td>
+        <td class="verdict-mid">Premium seçenek</td>
+      </tr>
+      <tr>
+        <td class="td-bold">Alya Mimarlık</td>
+        <td>8 — 16,5M TL</td>
+        <td><span class="fpp-stars mid">★★★☆☆</span></td>
+        <td><span class="fpp-stars low">★★☆☆☆</span></td>
+        <td><span class="eval-badge caution">ORTA-YÜKSEK</span></td>
+        <td class="verdict-mid">E+M avantajı var</td>
+      </tr>
+      <tr>
+        <td class="td-bold">Sia Moore</td>
+        <td>8 — 16,5M TL</td>
+        <td><span class="fpp-stars mid">★★★☆☆</span></td>
+        <td><span class="fpp-stars low">★★☆☆☆</span></td>
+        <td><span class="eval-badge danger">YÜKSEK</span></td>
+        <td style="color:#C62828; font-weight:700;">Uygun değil</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box green">
+    <strong>OPTİMİZASYON STRATEJİSİ:</strong> En iyi değer için <strong>Geo ID — Kademe B</strong> (konsept + uygulama projesi, denetim hariç). Mobilya tedariki için ayrıca <strong>Lares Mimarlık</strong>'ı tedarik danışmanı olarak dahil etmek ek maliyet avantajı sağlar.
+  </div>
+
+  <h4>KÖR NOKTA ANALİZİ — Gözden Kaçanlar</h4>
+  <p style="font-size:12px; color:var(--warm-gray); margin-bottom:16px;">Bu rehberde ele alınmayan ama karar öncesinde mutlaka sorgulanması gereken konular.</p>
+
+  <div class="blindspot-grid">
+    <div class="blindspot-card critical">
+      <div class="blindspot-icon">⚠</div>
+      <div class="blindspot-title">Sözleşme Kapsamı Belirsizliği</div>
+      <div class="blindspot-desc">Kaç adet site visit dahil? Revizyon hakkı sınırlı mı? Uygulama kontrollüğü ek ücretli mi? Bu maddeler imzadan önce yazılı netleştirilmezse en büyük anlaşmazlık kaynağına dönüşür.</div>
+    </div>
+    <div class="blindspot-card critical">
+      <div class="blindspot-icon">⚠</div>
+      <div class="blindspot-title">Ofis Kapasitesi Doğrulanmadı</div>
+      <div class="blindspot-desc">Seçilecek ofisin kaç aktif projesi var? Marin Otel'e kim lead olacak — kıdemli mimar mı, junior mı? Referanslarınızı ararken bunu doğrudan sorun. Portoföyle ekip farklıdır.</div>
+    </div>
+    <div class="blindspot-card warning">
+      <div class="blindspot-icon">!</div>
+      <div class="blindspot-title">Samsun Yerel Tedarik Zinciri</div>
+      <div class="blindspot-desc">İstanbul'dan seçilen malzemelerin Samsun'a ulaşım süresi ve nakliye maliyeti hesaba katılmadı. Bazı özel malzemeler 8–12 haftalık temin süresine sahip olabilir. İnşaat takvimini etkiler.</div>
+    </div>
+    <div class="blindspot-card warning">
+      <div class="blindspot-icon">!</div>
+      <div class="blindspot-title">Döviz Kuru Riski</div>
+      <div class="blindspot-desc">Proje 12–18 ay sürecek. İthal malzeme ve mobilyalar EUR/USD bazlı fiyatlanıyor. Sözleşmedeki fiyat sabitleme maddesi kritik — aksi halde nihai maliyet %20–40 artabilir.</div>
+    </div>
+    <div class="blindspot-card warning">
+      <div class="blindspot-icon">!</div>
+      <div class="blindspot-title">Fikri Mülkiyet &amp; Lisans</div>
+      <div class="blindspot-desc">Konsept tasarım kimindir? Ofisin paylaşma hakkı var mı? Sosyal medya, yarışma, portföy yayını. Eğer butik kimlik güçlü tutulmak isteniyorsa bu madde sözleşmeye girmelidir.</div>
+    </div>
+    <div class="blindspot-card info">
+      <div class="blindspot-icon">i</div>
+      <div class="blindspot-title">Yerel Yönetmelik Uyumu</div>
+      <div class="blindspot-desc">Samsun Büyükşehir Belediyesi ve turizm işletme belgesi gereksinimleri iç mekan projesini etkiler (çıkış işaretleri, yangın kompartımanı, engelli erişimi). İstanbul'daki ofis bu detayları bilmeyebilir.</div>
+    </div>
+    <div class="blindspot-card info">
+      <div class="blindspot-icon">i</div>
+      <div class="blindspot-title">Garanti &amp; Teslim Sonrası Destek</div>
+      <div class="blindspot-desc">Proje teslim edildikten sonra imalat hatası ya da malzeme sorunu çıkarsa ofis sorumlu mu? Sözleşmede minimum 1 yıl teslim sonrası teknik destek maddesi olması önerilir.</div>
+    </div>
+    <div class="blindspot-card info">
+      <div class="blindspot-icon">i</div>
+      <div class="blindspot-title">Konsept Brief Belgesi Yok</div>
+      <div class="blindspot-desc">Seçilecek ofise verilecek bir yazılı konsept brief henüz hazırlanmadı. Beklentilerin, hedef misafir profilinin, marka kimliğinin ve bütçe tavanının yazıya dökülmesi ilk toplantıdan önce yapılmalıdır.</div>
+    </div>
+  </div>
+
+  <h4>KRİTİK DÜZELTMELER (Doğrulama Özeti)</h4>
+  <table>
+    <thead><tr><th>OFİS</th><th>ESKİ BİLGİ</th><th>DOĞRU BİLGİ</th><th>ETKİ</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Sia Moore</td><td>Mondrian Doha tasarımcısı</td><td>Fit-out müteahhidi (Marcel Wanders tasarladı)</td><td><span class="eval-badge danger">PUAN DÜŞTÜ 4→3</span></td></tr>
+      <tr><td class="td-bold">Alya Mimarlık</td><td>400+ proje, "guest journey"</td><td>300–400 (tutarsız), guest journey doğrulanamadı</td><td><span class="eval-badge caution">PUAN DÜŞTÜ 4→3</span></td></tr>
+      <tr><td class="td-bold">Hayri Atak</td><td>Deneyimli otel tasarımcısı</td><td>4 kişilik ekip, inşa edilmiş otel kanıtı zayıf</td><td><span class="eval-badge danger">PUAN DÜŞTÜ 4→2</span></td></tr>
+      <tr><td class="td-bold">Geo ID</td><td>"Hishvahan" Hotel</td><td>Hisvahan Hotel (Gaziantep) + W Istanbul + Bebek Hotel</td><td><span class="eval-badge best">5/5 PEKİŞTİ</span></td></tr>
+      <tr><td class="td-bold">Fiyatlar</td><td>1 USD = 35,5 TL</td><td>1 USD = 44,47 TL — tüm rakamlar düzeltildi</td><td><span class="eval-badge danger">MALİYET %25 ARTTI</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════ 11 NİHAİ ÖNERİ + YOL HARİTASI ═══════ -->
+<div class="page">
+  <div class="page-header"><span>MARİN OTEL  |  SAMSUN</span><span>11 — NİHAİ ÖNERİ &amp; YOL HARİTASI</span></div>
+  <div class="section-num">11</div>
+  <div class="section-title">NİHAİ ÖNERİ</div>
+  <div class="section-subtitle">Yol Haritası &amp; İletişim</div>
+  <div class="section-bar"></div>
+
+  <h4>ÖNCELİKLİ OFİS ÖNERİLERİ</h4>
+  <table class="rec-table">
+    <thead><tr><th>#</th><th>OFİS</th><th>KADEME</th><th>GEREKÇE</th><th>TAHMİNİ BÜTÇE</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="td-bold">Geo ID (Mahmut Anlar)</td>
+        <td><span class="eval-badge best">B ÖNERİLEN</span></td>
+        <td>Otel iç mimarisi birincil uzmanlık. 5+ doğrulanmış otel projesi. En düşük risk. En iyi fiyat-performans.</td>
+        <td>8 — 16,5M TL</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td class="td-bold">Autoban</td>
+        <td><span class="eval-badge good">B PREMIUM</span></td>
+        <td>Witt Istanbul butik DNA'sı. Karadeniz hikayesi storytelling'e uygun. Bütçe izin verirse seçilmeli.</td>
+        <td>16,5 — 33M TL</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td class="td-bold">Lares Mimarlık</td>
+        <td><span class="eval-badge caution">B BÜTÇE</span></td>
+        <td>Kendi mobilya atölyesi — tedarik avantajı gerçek. Bütçe kısıtlıysa karşılaştırma için teklif alın.</td>
+        <td>4,4 — 9M TL</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box green">
+    <strong>MENTOR PERSPEKTİFİ:</strong> Bu ölçekte (79 oda, 11.075 m²) en kritik hata portföye bakıp karar vermektir. <em>Portföy ofisin kapasitesini göstermez, ekibini göstermez.</em> Teklife göre değil, toplantıdaki insana göre karar verin. Geo ID ile Autoban'a aynı soruyu sorun: "Bu projeye kim lead olacak?" Cevap her şeyi açıklar.
+  </div>
+
+  <h4>ADIM ADIM YOL HARİTASI</h4>
+
+  <div class="roadmap">
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle now"><span>1</span></div>
+        <div class="roadmap-period">ŞİMDİ<br>Hf 1</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">HAZIRLIK</div>
+        <div class="roadmap-title">Konsept Brief Belgesi Hazırla</div>
+        <div class="roadmap-detail">Hedef misafir profili, marka vizyonu, bütçe tavanı, tercih ettiğiniz konsept yönü (bu rehberdeki seçici sonucuna göre) ve kesinlikle istemediğiniz şeyleri yazıya dökün. Bu belge olmadan toplantıya gitmeyin.</div>
+        <span class="roadmap-action now">HEMEN YAP</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle now"><span>2</span></div>
+        <div class="roadmap-period">Hf 1</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">HAZIRLIK</div>
+        <div class="roadmap-title">İletişim Paketi Hazırla</div>
+        <div class="roadmap-detail">Mimari proje özeti (DWF veya PDF), kat planları (DWG/DXF), parsel bilgisi, oda listesi, teknik veriler. Ofislere gönderilecek dosyalar 1. mailing'de hazır olmalı.</div>
+        <span class="roadmap-action now">HEMEN YAP</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle soon"><span>3</span></div>
+        <div class="roadmap-period">Hf 1–2</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">İLK İLETİŞİM</div>
+        <div class="roadmap-title">3 Ofise Tanıtım Maili Gönder</div>
+        <div class="roadmap-detail">Geo ID, Autoban, Lares Mimarlık. Mail kısa olsun: proje özeti + ölçek + kapsam + bütçe aralığı + "Ön görüşme için uygun musunuz?" sorusu. Uzun mail okutmayın.</div>
+        <span class="roadmap-action soon">HAFİF ACİL</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle soon"><span>4</span></div>
+        <div class="roadmap-period">Hf 2–3</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">GÖRÜŞMELER</div>
+        <div class="roadmap-title">Online Tanıtım Toplantıları</div>
+        <div class="roadmap-detail">Her ofisle ayrı 45 dk. Konsept brief belgenizi paylaşın. "Bu projeye kim lead olacak?" sorusunu sorun. Referans otel işverenlerinin iletişim bilgilerini isteyin. Toplantı notları alın.</div>
+        <span class="roadmap-action soon">PLANLIYORUM</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle soon"><span>5</span></div>
+        <div class="roadmap-period">Hf 3–4</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">TEKLİF SÜRECİ</div>
+        <div class="roadmap-title">Detaylı Teklif Talebi Gönder</div>
+        <div class="roadmap-detail">Scope of work, teslim programı, ödeme planı, revizyon hakları, sözleşme şartları, referans listesi. Kademe B (konsept + uygulama projesi) için teklif isteyin. Kademe A fiyatını da ayrıca sorun.</div>
+        <span class="roadmap-action soon">PLANLIYORUM</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle soon"><span>6</span></div>
+        <div class="roadmap-period">Hf 4–5</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">DEĞERLENDİRME</div>
+        <div class="roadmap-title">Teklifleri Karşılaştır + Referans Ara</div>
+        <div class="roadmap-detail">Bu rehberdeki 6 kritere göre teklifleri puanlayın. Referansları arayın — "O ofisle çalışmayı tekrar eder misiniz?" tek sorusunu sorun. Cevap en doğru bilgi kaynağıdır.</div>
+        <span class="roadmap-action soon">PLANLIYORUM</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle later"><span>7</span></div>
+        <div class="roadmap-period">Hf 5–6</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">KARAR</div>
+        <div class="roadmap-title">Seçim, Müzakere, Sözleşme</div>
+        <div class="roadmap-detail">Sözleşmeye eklenecek kritik maddeler: revizyon hakkı sayısı, site visit sayısı, fikri mülkiyet, teslim tarihleri ve gecikme cezası, kur farkı koruma maddesi. Hukuki danışmanlık alın.</div>
+        <span class="roadmap-action later">YAKINLAŞIYOR</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle later"><span>8</span></div>
+        <div class="roadmap-period">Ay 2</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">PROJE BAŞLANGICI</div>
+        <div class="roadmap-title">Kick-off Toplantısı + Site Visit</div>
+        <div class="roadmap-detail">Seçilen ofis Samsun'a geliyor. Kat planları üzerinde yerinde çalışma, mevcut yapının fotoğraflanması, yerel tedarikçi listesi paylaşımı. Konsept brief yazılı onay alınıyor.</div>
+        <span class="roadmap-action later">PLANLANACAK</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle later"><span>9</span></div>
+        <div class="roadmap-period">Ay 2–4</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">KONSEPT TASARIM</div>
+        <div class="roadmap-title">Konsept Geliştirme + Onay</div>
+        <div class="roadmap-detail">Moodboard, renk/malzeme paleti, mekan planlaması, 3D konsept görselleri. 2 revizyon hakkı kullanın — ilki büyük yön düzeltmeleri, ikincisi ince ayar. Konsept onaylandıktan sonra geri dönmek pahalıdır.</div>
+        <span class="roadmap-action later">İLERİDE</span>
+      </div>
+    </div>
+
+    <div class="roadmap-item">
+      <div class="roadmap-left">
+        <div class="roadmap-circle later"><span>10</span></div>
+        <div class="roadmap-period">Ay 4–8</div>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-phase">UYGULAMA PROJESİ</div>
+        <div class="roadmap-title">Detay Çizimleri + Şartname</div>
+        <div class="roadmap-detail">Tüm mekanlar için uygulama çizimleri, malzeme şartnamesi, FF&amp;E listesi, aydınlatma projesi. Bu aşamada yerel Samsun firmaları ihaleye hazırlanıyor. Projelerin teslimini takip edin.</div>
+        <span class="roadmap-action later">İLERİDE</span>
+      </div>
+    </div>
+
+  </div>
+
+  <h4>SÖZLEŞME ÖNCESİ KONTROL LİSTESİ</h4>
+  <table>
+    <thead><tr><th>MADDE</th><th>SORULACAK SORU</th><th>DURUM</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">Proje leadi</td><td>Kıdemli mimar mı, junior mı?</td><td><span class="eval-badge caution">SORULMADI</span></td></tr>
+      <tr><td class="td-bold">Revizyon hakkı</td><td>Kaç revizyon dahil, fazlası nasıl ücretlendiriliyor?</td><td><span class="eval-badge caution">SORULMADI</span></td></tr>
+      <tr><td class="td-bold">Site visit</td><td>Kaç kez geliyor, seyahat kim öder?</td><td><span class="eval-badge caution">SORULMADI</span></td></tr>
+      <tr><td class="td-bold">Kur farkı</td><td>Sözleşme TL mi, döviz mi? Güncelleme maddesi var mı?</td><td><span class="eval-badge caution">SORULMADI</span></td></tr>
+      <tr><td class="td-bold">Fikri mülkiyet</td><td>Tasarım paylaşım ve lisans hakları?</td><td><span class="eval-badge caution">SORULMADI</span></td></tr>
+      <tr><td class="td-bold">Referans araması</td><td>En az 2 geçmiş otel işverenini aradınız mı?</td><td><span class="eval-badge caution">SORULMADI</span></td></tr>
+    </tbody>
+  </table>
+
+  <h4>İLETİŞİM</h4>
+  <table>
+    <thead><tr><th>#</th><th>OFİS</th><th>WEB</th><th>ÖNCE SOR</th></tr></thead>
+    <tbody>
+      <tr><td class="td-bold">1</td><td class="td-bold">Geo ID</td><td>geo-id.com</td><td>Marin Otel ölçeğinde aktif kapasiteleri var mı?</td></tr>
+      <tr><td class="td-bold">2</td><td class="td-bold">Autoban</td><td>autoban.com</td><td>Hilton renovasyonu ne zaman bitiyor — takvim çakışması?</td></tr>
+      <tr><td class="td-bold">3</td><td class="td-bold">Lares Mimarlık</td><td>laresmimarlik.com</td><td>Otel referansı var mı — mobilya atölyesi nasıl işliyor?</td></tr>
+    </tbody>
+  </table>
+
+  <div style="background:var(--near-black); color:white; padding:28px; margin-top:36px; border-radius:4px;">
+    <div style="font-size:9px; font-weight:800; color:var(--accent-teal); letter-spacing:2px; margin-bottom:8px;">SONUÇ</div>
+    <div style="font-family:'Playfair Display', serif; font-size:18px; line-height:1.6; color:white; margin-bottom:12px;">"Doğru ofisi seçmek projenin yarısıdır. Bu rehber sizi geri kalan yarısına hazırlamak için tasarlandı."</div>
+    <p style="font-size:11px; color:#666; margin:0;">Bu rehber Marin Otel projesi için Mart 2026'da hazırlanmıştır. Tüm ofis bilgileri bağımsız kaynaklardan doğrulanmış, maliyetler resmi verilere dayandırılmıştır. Nihai karar öncesinde kısa listedeki ofislerle doğrudan görüşme ve referans kontrolü yapılmalıdır.</p>
+  </div>
+</div>
+
+<!-- ═══════ QUIZ JS ═══════ -->
+<script>
+/* ── Concept Selector ── */
+const conceptData = {
+  warm: {
+    tag: 'KONSEPT 01 — KARADENİZ MODERN',
+    office: 'Geo ID (Mahmut Anlar)',
+    badge: 'A GRUBU — 1. ÖNCELİK',
+    why: 'Karadeniz Modern konsepti için Geo ID birebir örtüşüyor. W Istanbul, Maxx Royal Bodrum ve Bebek Hotel referanslarıyla organik malzeme ve yerel kimliği otel ölçeğinde uyguladıkları kanıtlanmış. Toprak tonları, bakır detaylar ve bölgesel kültürel referanslar bu ofisin doğal dili.',
+    alts: ['Lares Mimarlık (yerel malzeme uzmanlığı)', 'Zoom TPU (sıcak modern)']
+  },
+  urban: {
+    tag: 'KONSEPT 02 — URBAN CHİC',
+    office: 'Autoban',
+    badge: 'A GRUBU — DREAM PİCK',
+    why: 'Urban Chic konsepti Autoban\'ın DNA\'sı. Witt Istanbul\'un cesur, koyu tonlu ve dramatik iç mekanı bu konseptin birebir referansı. Storytelling odaklı yaklaşımları Samsun\'un liman ve deniz hikayesini cesur bir tasarım diliyle anlatmak için ideal. Bütçe izin verirse bu konseptle bu ofis.',
+    alts: ['Geo ID (daha temkinli urban)', 'Zoom TPU (bütçe uyumlu)']
+  },
+  minimal: {
+    tag: 'KONSEPT 03 — SADE LÜKS',
+    office: 'Zoom TPU',
+    badge: 'B GRUBU — ALTERNATİF',
+    why: 'Sade Lüks konsepti için Zoom TPU güçlü bir seçenek — clean modern yaklaşımları ve malzeme titizlikleri bu konseptle örtüşüyor. Geo ID de bu konsepti uygulayabilir ancak Zoom TPU bu yönde daha odaklı bir portföy sunuyor ve bütçe avantajı sağlıyor.',
+    alts: ['Geo ID (daha güvenli seçim)', 'Lares Mimarlık (mobilya avantajı)']
+  }
+};
+
+function selectConcept(el, key) {
+  document.querySelectorAll('.concept-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const d = conceptData[key];
+  const r = document.getElementById('conceptResult');
+  document.getElementById('cResultTag').textContent = d.tag;
+  document.getElementById('cResultOffice').textContent = d.office;
+  document.getElementById('cResultBadge').textContent = d.badge;
+  document.getElementById('cResultWhy').textContent = d.why;
+  document.getElementById('cResultAlts').innerHTML = d.alts.map(a =>
+    `<div class="concept-result-alt">↳ <span>${a}</span></div>`
+  ).join('');
+  r.classList.add('show');
+  r.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
+<script>
+const scores = {
+  geo:     { name: 'Geo ID (Mahmut Anlar)', base: 10 },
+  autoban: { name: 'Autoban', base: 10 },
+  alya:    { name: 'Alya Mimarlık', base: 4 },
+  sia:     { name: 'Sia Moore', base: 3 },
+  hayri:   { name: 'Hayri Atak', base: 2 },
+  lares:   { name: 'Lares Mimarlık', base: 5 },
+  yapist:  { name: 'Yapı Stüdyo', base: 4 }
+};
+const qMap = [
+  { budget:   { geo:3, autoban:0, alya:5, sia:1, hayri:4, lares:5, yapist:4 },
+    balanced: { geo:5, autoban:3, alya:4, sia:3, hayri:3, lares:4, yapist:3 },
+    premium:  { geo:4, autoban:5, alya:1, sia:3, hayri:2, lares:1, yapist:1 } },
+  { safe:     { geo:5, autoban:5, alya:3, sia:3, hayri:0, lares:3, yapist:3 },
+    modern:   { geo:4, autoban:5, alya:2, sia:3, hayri:4, lares:2, yapist:2 },
+    bold:     { geo:2, autoban:4, alya:0, sia:2, hayri:5, lares:0, yapist:1 } },
+  { critical: { geo:4, autoban:4, alya:5, sia:5, hayri:1, lares:4, yapist:4 },
+    important:{ geo:4, autoban:3, alya:4, sia:4, hayri:2, lares:3, yapist:3 },
+    flexible: { geo:3, autoban:3, alya:2, sia:2, hayri:3, lares:2, yapist:2 } },
+  { boutique: { geo:3, autoban:3, alya:3, sia:2, hayri:5, lares:3, yapist:4 },
+    mid:      { geo:5, autoban:4, alya:4, sia:3, hayri:2, lares:4, yapist:3 },
+    big:      { geo:4, autoban:5, alya:2, sia:4, hayri:0, lares:2, yapist:1 } },
+  { turnkey:  { geo:3, autoban:2, alya:5, sia:4, hayri:1, lares:5, yapist:4 },
+    guide:    { geo:4, autoban:3, alya:4, sia:3, hayri:2, lares:4, yapist:3 },
+    design:   { geo:4, autoban:5, alya:2, sia:2, hayri:4, lares:2, yapist:2 } }
+];
+const whyMap = {
+  geo:     'Otel iç mimarisi birincil uzmanlık alanı. 30+ yıl, Maxx Royal, W Istanbul, Bebek Hotel. En düşük risk.',
+  autoban: 'Witt Istanbul butik otel DNA\'sı, 20+ yıl uluslararası deneyim, hikaye odaklı tasarım. Premium fiyat.',
+  alya:    'E+M dahil bütüncül hizmet, anahtar teslim model. Otel deneyimi sınırlı ama pragmatik seçenek.',
+  sia:     'Uluslararası fit-out deneyimi, lüks malzeme bilgisi. Tasarımcı rolü sorgulanmalı.',
+  hayri:   'NABA otel eğitimi, parametrik tasarım. 4 kişilik ekip — kapasite riski yüksek.',
+  lares:   'Kendi mobilya atölyesi, 26+ yıl deneyim, tedarik avantajı. Otel referansı araştırılmalı.',
+  yapist:  'Otel odaklı uzmanlık, konseptten uygulamaya tam hizmet.'
+};
+
+let currentStep = 0;
+const answers = [];
+
+function nextStep(step) {
+  const sel = document.querySelector(`input[name="q${step}"]:checked`);
+  if (!sel) return;
+  answers[step] = sel.value;
+  document.querySelectorAll('.quiz-step')[step].classList.remove('active');
+  document.querySelectorAll('.quiz-step')[step + 1].classList.add('active');
+  const dots = document.querySelectorAll('.quiz-dot');
+  dots[step].classList.remove('current');
+  dots[step].classList.add('done');
+  if (dots[step + 1]) dots[step + 1].classList.add('current');
+  currentStep = step + 1;
+}
+
+function showResult() {
+  const sel = document.querySelector(`input[name="q4"]:checked`);
+  if (!sel) return;
+  answers[4] = sel.value;
+  const totals = {};
+  Object.keys(scores).forEach(k => { totals[k] = scores[k].base; });
+  answers.forEach((ans, i) => {
+    const map = qMap[i][ans];
+    if (map) Object.keys(map).forEach(k => { totals[k] += map[k]; });
+  });
+  const sorted = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  const dots = document.querySelectorAll('.quiz-dot');
+  dots[4].classList.remove('current');
+  dots[4].classList.add('done');
+  document.getElementById('quiz-result').style.display = 'block';
+  document.getElementById('result-name').textContent = scores[sorted[0][0]].name;
+  document.getElementById('result-why').textContent = whyMap[sorted[0][0]];
+  let altsHtml = '';
+  for (let i = 1; i <= 2; i++) {
+    altsHtml += `<div class="runner-up"><span class="runner-up-name">${i+1}. ${scores[sorted[i][0]].name}</span></div>`;
+  }
+  document.getElementById('result-alts').innerHTML = altsHtml;
+}
+
+function resetQuiz() {
+  answers.length = 0;
+  currentStep = 0;
+  document.getElementById('quiz-result').style.display = 'none';
+  document.querySelectorAll('.quiz-step').forEach((s, i) => {
+    s.classList.toggle('active', i === 0);
+  });
+  document.querySelectorAll('.quiz-dot').forEach((d, i) => {
+    d.className = 'quiz-dot' + (i === 0 ? ' current' : '');
+  });
+  document.querySelectorAll('.quiz-opt input').forEach(i => { i.checked = false; });
+}
+
+document.querySelectorAll('.quiz-opt').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const radio = this.querySelector('input[type="radio"]');
+    radio.checked = true;
+    this.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+</script>
+
+</div><!-- /main-content -->
+</body>
+</html>
