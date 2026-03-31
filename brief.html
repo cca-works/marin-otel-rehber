@@ -25,8 +25,9 @@
   body { font-family: 'Inter', -apple-system, sans-serif; color: var(--charcoal); background: white; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
   .cover { min-height: 100vh; background: var(--near-black); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 40px; page-break-after: always; position: relative; overflow: hidden; }
-  .cover-bg { position: absolute; inset: 0; background: url('images/brief-cover-atakum.jpg') center/cover; opacity: 0.25; filter: brightness(0.6) saturate(0.7); }
-  .cover > * { position: relative; z-index: 2; }
+  .cover-bg { position: absolute !important; inset: 0; background: url('images/brief-cover-atakum.png') center 30%/cover; opacity: 0.55; z-index: 0 !important; }
+  .cover-overlay { position: absolute !important; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.7) 100%); z-index: 1 !important; }
+  .cover .cover-line, .cover h1, .cover h2, .cover h3, .cover-divider, .cover-meta { position: relative; z-index: 2; }
   .cover-line { width: 80px; height: 3px; background: var(--accent-red); margin-bottom: 32px; }
   .cover h1 { font-weight: 900; font-size: 56px; color: white; letter-spacing: -2px; line-height: 1.1; }
   .cover h2 { font-weight: 300; font-size: 22px; color: #AAA; margin-top: 8px; }
@@ -122,6 +123,7 @@
 <!-- ═══════ KAPAK ═══════ -->
 <section class="cover">
   <div class="cover-bg"></div>
+  <div class="cover-overlay"></div>
   <div class="cover-line"></div>
   <h1>MARİN OTEL</h1>
   <h2>Samsun | Atakum</h2>
