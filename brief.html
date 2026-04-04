@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Marin Otel — Interior Design Guideline</title>
+<title>Marin Otel — İç Mimari Tasarım Özeti</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,19 +24,12 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; color: var(--charcoal); background: white; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-  .cover { min-height: 100vh; background: var(--near-black); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 40px; page-break-after: always; position: relative; overflow: hidden; }
-  .cover-bg { position: absolute !important; inset: 0; background: url('images/brief-cover-atakum.png') center 30%/cover; opacity: 0.55; z-index: 0 !important; }
-  .cover-overlay { position: absolute !important; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.7) 100%); z-index: 1 !important; }
-  .cover .cover-line, .cover h1, .cover h2, .cover h3, .cover-divider, .cover-meta { position: relative; z-index: 2; }
-  .cover-line { width: 80px; height: 3px; background: var(--accent-red); margin-bottom: 32px; }
-  .cover h1 { font-weight: 900; font-size: 56px; color: white; letter-spacing: -2px; line-height: 1.1; }
-  .cover h2 { font-weight: 300; font-size: 22px; color: #AAA; margin-top: 8px; }
-  .cover-divider { width: 1px; height: 60px; background: #444; margin: 40px 0; }
-  .cover h3 { font-weight: 600; font-size: 16px; color: #CCC; letter-spacing: 3px; }
-  .cover-meta { margin-top: 48px; display: flex; gap: 40px; }
-  .cover-meta-item { text-align: center; }
-  .cover-meta-item label { display: block; font-size: 9px; font-weight: 700; color: var(--mid-gray); letter-spacing: 2px; margin-bottom: 4px; }
-  .cover-meta-item span { font-size: 13px; color: #CCC; }
+  .cover { min-height: 100vh; background: #F0EBE4; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 60px 40px 120px; page-break-after: always; position: relative; overflow: hidden; }
+  .cover-date { position: absolute; top: 48px; right: 60px; font-size: 15px; color: var(--dark-gray); font-weight: 400; letter-spacing: 0.5px; }
+  .cover-title-light { font-weight: 300; font-size: 68px; color: var(--near-black); letter-spacing: -2px; line-height: 1; margin-bottom: -4px; }
+  .cover-title-bold { font-weight: 900; font-size: 80px; color: var(--near-black); letter-spacing: -3px; line-height: 1; text-transform: uppercase; }
+  .cover h2 { font-weight: 600; font-size: 17px; color: var(--near-black); margin-top: 32px; letter-spacing: 0.5px; }
+  .cover h3 { font-weight: 400; font-size: 15px; color: var(--warm-gray); margin-top: 4px; letter-spacing: 0.3px; }
 
   .page { max-width: 800px; margin: 0 auto; padding: 60px 40px; page-break-after: always; }
   .section-num { font-size: 48px; font-weight: 800; color: var(--pale-gray); line-height: 1; margin-bottom: -6px; }
@@ -98,15 +91,17 @@
   .sep { border: none; border-top: 1px solid var(--pale-gray); margin: 32px 0; }
 
   @media (max-width: 768px) {
-    .cover h1 { font-size: 36px; }
-    .cover-meta { flex-direction: column; gap: 16px; }
+    .cover-title-light { font-size: 44px; }
+    .cover-title-bold { font-size: 52px; }
+    .cover-date { top: 28px; right: 28px; font-size: 13px; }
     .page { padding: 32px 20px; }
     .price-grid { grid-template-columns: 1fr; }
     .img-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
-    .cover { padding: 40px 20px; }
-    .cover h1 { font-size: 28px; }
+    .cover { padding: 40px 20px 80px; }
+    .cover-title-light { font-size: 32px; }
+    .cover-title-bold { font-size: 40px; letter-spacing: -2px; }
     .page { padding: 24px 16px; }
     .area-card { padding: 16px; }
   }
@@ -122,26 +117,12 @@
 
 <!-- ═══════ KAPAK ═══════ -->
 <section class="cover">
-  <div class="cover-bg"></div>
-  <div class="cover-overlay"></div>
-  <div class="cover-line"></div>
-  <h1>MARİN OTEL</h1>
-  <h2>Samsun | Atakum</h2>
-  <div class="cover-divider"></div>
-  <h3>INTERIOR DESIGN GUIDELINE</h3>
-  <div class="cover-meta">
-    <div class="cover-meta-item">
-      <label>TARİH</label>
-      <span>Nisan 2026</span>
-    </div>
-    <div class="cover-meta-item">
-      <label>DOKÜMAN</label>
-      <span>Hizmet Talep Dosyası</span>
-    </div>
-    <div class="cover-meta-item">
-      <label>İŞVEREN</label>
-      <span>Polfisan Kent Mobilyaları</span>
-    </div>
+  <div class="cover-date">Nisan 2026</div>
+  <div>
+    <div class="cover-title-light">İç Mimari</div>
+    <div class="cover-title-bold">TASARIM ÖZETİ</div>
+    <h2>Marin Otel &amp; Restaurant</h2>
+    <h3>Samsun, Atakum</h3>
   </div>
 </section>
 
@@ -536,7 +517,7 @@
   <hr class="sep">
 
   <div style="text-align:center; padding: 24px 0;">
-    <p style="font-size:10px; color:var(--light-gray); letter-spacing:1px;">Marin Otel — Interior Design Guideline — Nisan 2026</p>
+    <p style="font-size:10px; color:var(--light-gray); letter-spacing:1px;">Marin Otel &amp; Restaurant — İç Mimari Tasarım Özeti — Nisan 2026</p>
   </div>
 </div>
 
